@@ -2025,3 +2025,138 @@ print(KP_2["TS_CS65X_1_1_1"].std())
 print(KP_2["TS_CS65X_1_1_2"].std())
 print(KP_2[(KP_2["Datetime"].dt.hour >= 10)&(KP_2["Datetime"].dt.hour <= 16)]["TS_CS65X_1_1_1"].std())
 print(KP_2[(KP_2["Datetime"].dt.hour >= 10)&(KP_2["Datetime"].dt.hour <= 16)]["TS_CS65X_1_1_2"].std())
+
+
+# durchschnittliche Albedo von weißen Cool Roofs berechnen, Datenbank aus coolroofs.org (CRRC Cool Roofs)
+
+cr_albedo = pd.read_csv("C:\\Users\\linus\\OneDrive\\Dokumente\\Publikation\\Directory_Roofs_20240809-0100.csv", sep = ",", low_memory=False)
+
+print(cr_albedo.info())
+cr_albedo = cr_albedo[cr_albedo["Color"].str.contains("White")==True]
+cr_albedo["3 Year Solar Reflectance"] = cr_albedo["3 Year Solar Reflectance"].str.replace("*", "", regex=False)
+cr_albedo["3 Year Solar Reflectance"] = pd.to_numeric(cr_albedo["3 Year Solar Reflectance"])
+print(cr_albedo.info())
+print(cr_albedo["Initial Solar Reflectance"].mean()) # 0.75
+print(cr_albedo["3 Year Solar Reflectance"].mean()) # 0.66
+
+# with removing all the rows that contain a * in 3 Year Solar Reflections and that contain NaN in said column
+cr_albedo = cr_albedo[cr_albedo["3 Year Solar Reflectance"].isna()==False]
+cr_albedo = cr_albedo[~cr_albedo["3 Year Solar Reflectance"].str.contains("*", regex=False)]
+cr_albedo["3 Year Solar Reflectance"] = pd.to_numeric(cr_albedo["3 Year Solar Reflectance"])
+print(cr_albedo["Initial Solar Reflectance"].mean()) # 0.77
+print(cr_albedo["3 Year Solar Reflectance"].mean()) # 0.66
+
+
+
+# Surface Temp Plot for Paper (measured Surface Temp vs TA vs SW IN)
+st_data = pd.read_csv("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Daten\\Oberflächentemperatur Messung\\st_data.csv", sep = ",", low_memory=False)
+st_data["Datetime"] =  pd.to_datetime(st_data["Datetime"])
+merged_data = pd.merge(completed_data[["Datetime", "TA_1_1_2", "SW_IN"]], st_data[["Datetime", "GD_MW", "HD_MW"]], on="Datetime", how="left")
+completed_data["GD_MW"] = merged_data["GD_MW"]
+completed_data["HD_MW"] = merged_data["HD_MW"]
+
+
+plt.rcParams["font.family"] = "Arial"
+plt.rcParams["font.size"] = 24
+timelabels = (["00:00", "04:00", "08:00", "12:00", "16:00", "20:00"])
+fig, (ax1, ax3, ax5) = plt.subplots(3, 1, figsize=(13,10))
+
+ax1.plot(completed_data.loc[completed_data["Datetime"].dt.date == pd.to_datetime("2023-08-11").date(), "Time"],
+        completed_data.loc[completed_data["Datetime"].dt.date == pd.to_datetime("2023-08-11").date(), "TA_1_1_2"], 
+        label="$T_A$", color="C3")
+ax1.scatter(completed_data.loc[completed_data["Datetime"].dt.date == pd.to_datetime("2023-08-11").date(), "Time"], 
+            completed_data.loc[completed_data["Datetime"].dt.date == pd.to_datetime("2023-08-11").date(), "GD_MW"], 
+            label="$T_S$ GR", color="C2")
+ax1.scatter(completed_data.loc[completed_data["Datetime"].dt.date == pd.to_datetime("2023-08-11").date(), "Time"],
+            completed_data.loc[completed_data["Datetime"].dt.date == pd.to_datetime("2023-08-11").date(), "HD_MW"], 
+            label="$T_S$ HR", color="C0")
+ax2 = ax1.twinx()
+ax2.plot(completed_data.loc[completed_data["Datetime"].dt.date == pd.to_datetime("2023-08-11").date(), "Time"],
+        completed_data.loc[completed_data["Datetime"].dt.date == pd.to_datetime("2023-08-11").date(), "SW_IN"], 
+        color="gold", label="$SW \downarrow$")
+
+ax3.plot(completed_data.loc[completed_data["Datetime"].dt.date == pd.to_datetime("2023-08-24").date(), "Time"],
+        completed_data.loc[completed_data["Datetime"].dt.date == pd.to_datetime("2023-08-24").date(), "TA_1_1_2"], 
+        label="$T_A$", color="C3")
+ax3.scatter(completed_data.loc[completed_data["Datetime"].dt.date == pd.to_datetime("2023-08-24").date(), "Time"],
+            completed_data.loc[completed_data["Datetime"].dt.date == pd.to_datetime("2023-08-24").date(), "GD_MW"], 
+            label="$T_S$ GR", color="C2")
+ax3.scatter(completed_data.loc[completed_data["Datetime"].dt.date == pd.to_datetime("2023-08-24").date(), "Time"],
+            completed_data.loc[completed_data["Datetime"].dt.date == pd.to_datetime("2023-08-24").date(), "HD_MW"], 
+            label="$T_S$ HR", color="C0")
+ax4 = ax3.twinx()
+ax4.plot(completed_data.loc[completed_data["Datetime"].dt.date == pd.to_datetime("2023-08-24").date(), "Time"],
+        completed_data.loc[completed_data["Datetime"].dt.date == pd.to_datetime("2023-08-24").date(), "SW_IN"], 
+        color="gold", label="$SW \downarrow$")
+
+ax5.plot(completed_data.loc[completed_data["Datetime"].dt.date == pd.to_datetime("2024-01-29").date(), "Time"],
+        completed_data.loc[completed_data["Datetime"].dt.date == pd.to_datetime("2024-01-29").date(), "TA_1_1_2"], 
+        label="$T_A$", color="C3")
+ax5.scatter(completed_data.loc[completed_data["Datetime"].dt.date == pd.to_datetime("2024-01-29").date(), "Time"],
+            completed_data.loc[completed_data["Datetime"].dt.date == pd.to_datetime("2024-01-29").date(), "GD_MW"], 
+            label="$T_S$ GR", color="C2")
+ax5.scatter(completed_data.loc[completed_data["Datetime"].dt.date == pd.to_datetime("2024-01-29").date(), "Time"],
+            completed_data.loc[completed_data["Datetime"].dt.date == pd.to_datetime("2024-01-29").date(), "HD_MW"], 
+            label="$T_S$ HR", color="C0")
+
+ax6 = ax5.twinx()
+ax6.plot(completed_data.loc[completed_data["Datetime"].dt.date == pd.to_datetime("2024-01-29").date(), "Time"],
+        completed_data.loc[completed_data["Datetime"].dt.date == pd.to_datetime("2024-01-29").date(), "SW_IN"], 
+        color="gold", label="$SW \downarrow$")
+
+ax5.legend(loc='center', bbox_to_anchor=(0.375, -0.7), ncol=3, frameon=False)
+ax6.legend(loc='center', bbox_to_anchor=(0.85, -0.7), ncol=1, frameon=False)
+ax3.set_ylabel("Temperature (°C)")
+ax4.set_ylabel("SW $\downarrow$ ($W/m²$)")
+ax5.set_xlabel("Time of Day")
+ax1.set_xticks(completed_data.loc[completed_data["Datetime"].dt.date == pd.to_datetime("2024-01-29").date(), "Time"][::8], labels=[])
+ax3.set_xticks(completed_data.loc[completed_data["Datetime"].dt.date == pd.to_datetime("2024-01-29").date(), "Time"][::8], labels=[])
+ax5.set_xticks(completed_data.loc[completed_data["Datetime"].dt.date == pd.to_datetime("2024-01-29").date(), "Time"][::8], labels=timelabels)
+ax1.set_xlim("00:00:00","23:30:00")
+ax2.set_xlim("00:00:00","23:30:00")
+ax3.set_xlim("00:00:00","23:30:00")
+ax4.set_xlim("00:00:00","23:30:00")
+ax5.set_xlim("00:00:00","23:30:00")
+ax6.set_xlim("00:00:00","23:30:00")
+ax1.set_title("11.08.2023", fontsize=24)
+ax3.set_title("24.08.2023", fontsize=24)
+ax5.set_title("29.01.2024", fontsize=24)
+plt.tight_layout()
+plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Publikation\\Plots\\surface_temps.pdf", format="pdf", bbox_inches='tight')
+plt.show()
+
+# VWC compare and QE compare during a heat wave
+fig, (ax1, ax2) = plt.subplots(2,1,figsize=(13,10))
+ax1.plot(HP_2["Datetime"], HP_2["VWC_1_1_1"],linewidth = 2,color="C2")
+ax1.plot(HP_2["Datetime"], HP_2["VWC_1_1_2"],linewidth = 2,color="C0")
+ax1.set_ylabel("VWC ($m³/m³$)")
+ax2.plot(HP_2["Datetime"] , HP_2["QE_GR"],linewidth = 2,color="C2", label="Green Roof")
+ax2.plot(HP_2["Datetime"] , HP_2["QE_HR"],linewidth = 2,color="C0", label="Green Roof")
+ax2.set_ylabel("Q$_E$ ($W/m²$)")
+ax2.xaxis.set_major_formatter(mdates.DateFormatter("%d. %b"))
+ax1.set_xticklabels([])
+ax2.legend(loc='center', bbox_to_anchor=(0.5, -0.25), ncol=2, frameon=False)
+ax1.set_xlim(HP_2["Datetime"].min(), HP_2["Datetime"].max())
+ax2.set_xlim(HP_2["Datetime"].min(), HP_2["Datetime"].max())
+plt.tight_layout()
+plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Publikation\\Plots\\vwc_qe_timeseries.pdf", format="pdf", bbox_inches='tight')
+plt.show()
+
+# VWC timeseries
+
+fig, ax1 = plt.subplots(figsize=(30,5))
+ax1.bar(completed_data.groupby(completed_data["Datetime"].dt.date)["Datetime"].first(),
+        completed_data.groupby(completed_data["Datetime"].dt.date)["Precipitation"].sum(), color="lightgray", edgecolor="dimgray", label="Precipitation", width=0.75)
+ax2 = ax1.twinx()
+ax2.plot(completed_data["Datetime"], completed_data["VWC_1_1_1"], color="C2", label="Green Roof")
+ax2.plot(completed_data["Datetime"], completed_data["VWC_1_1_2"], color="C0", label="Hybrid Roof")
+ax1.set_xlim(completed_data["Datetime"].min(), completed_data["Datetime"].max())
+ax2.set_xlim(completed_data["Datetime"].min(), completed_data["Datetime"].max())
+ax1.set_xticklabels(["Aug 2023", "Sep 2023", "Oct 2023", "Nov 2023", "Dec 2023", "Jan 2024", "Feb 2024", "Mar 2024"])
+ax1.set_ylabel("Precipitation (mm)")
+ax2.set_ylabel("VWC ($m³/m³$)")
+ax1.legend(loc='center', bbox_to_anchor=(0.5, -0.4), ncol=1, frameon=False)
+ax2.legend(loc='center', bbox_to_anchor=(0.5, -0.25), ncol=2, frameon=False)
+#plt.tight_layout()
+plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Publikation\\Plots\\vwc_precipitation_timeseries_for_appendix.pdf", format="pdf", bbox_inches='tight')
+plt.show()
