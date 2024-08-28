@@ -23,7 +23,7 @@ for column in wdata.select_dtypes(include="object").columns:
     wdata[column] = wdata[column].astype(float)
 
 # 30 Minuten Mittelwerte für wdata
-wdata = wdata.resample("30min", on="Datetime").mean()
+wdata = wdata.resample("30min", on="Datetime").sum()
 print(wdata)
 
 
@@ -57,25 +57,25 @@ print(hw_nd_hp2)
 
 
 # Wetterdaten vom WD
-produkt_zehn_min_rr_20200101_20231231_00662 = pd.read_csv("C:\\Users\\linus\\OneDrive\\Dokumente\\Publikation\\produkt_zehn_min_rr_20200101_20231231_00662.txt", sep = ";", header = 0)
-print(produkt_zehn_min_rr_20200101_20231231_00662)
-produkt_zehn_min_rr_20200101_20231231_00662["MESS_DATUM"] = pd.to_datetime(produkt_zehn_min_rr_20200101_20231231_00662["MESS_DATUM"], format="%Y%m%d%H%M")
-produkt_zehn_min_rr_20200101_20231231_00662.set_index("MESS_DATUM", inplace=True)
-produkt_zehn_min_rr_20200101_20231231_00662 = produkt_zehn_min_rr_20200101_20231231_00662.apply(pd.to_numeric, errors="coerce")
-produkt_zehn_min_rr_20200101_20231231_00662 = produkt_zehn_min_rr_20200101_20231231_00662.resample("30min").mean()
-produkt_zehn_min_rr_20200101_20231231_00662.reset_index(inplace=True)
-dwd_nd_hp2 = produkt_zehn_min_rr_20200101_20231231_00662.loc[(produkt_zehn_min_rr_20200101_20231231_00662["MESS_DATUM"].dt.date >= pd.to_datetime("2023-09-04").date()) & (produkt_zehn_min_rr_20200101_20231231_00662["MESS_DATUM"].dt.date < pd.to_datetime("2023-09-12").date())]
+data_OBS_DEU_PT10M_RR = pd.read_csv("C:\\Users\\linus\\OneDrive\\Dokumente\\Publikation\\data_OBS_DEU_PT10M_RR.csv", sep = ",", header = 0, index_col=False)
+print(data_OBS_DEU_PT10M_RR)
+data_OBS_DEU_PT10M_RR['Zeitstempel'] = pd.to_datetime(data_OBS_DEU_PT10M_RR['Zeitstempel'])
+data_OBS_DEU_PT10M_RR.set_index("Zeitstempel", inplace=True)
+data_OBS_DEU_PT10M_RR = data_OBS_DEU_PT10M_RR.apply(pd.to_numeric, errors="coerce")
+data_OBS_DEU_PT10M_RR = data_OBS_DEU_PT10M_RR.resample("30min").sum()
+data_OBS_DEU_PT10M_RR.reset_index(inplace=True)
+dwd_nd_hp2 = data_OBS_DEU_PT10M_RR.loc[(data_OBS_DEU_PT10M_RR["Zeitstempel"].dt.date >= pd.to_datetime("2023-09-04").date()) & (data_OBS_DEU_PT10M_RR["Zeitstempel"].dt.date < pd.to_datetime("2023-09-12").date())]
 
 # Test ob es Differenzen im Niederschlag während HP_2 gibt
 hw_nd_hp2.set_index("Datetime", inplace=True)
-dwd_nd_hp2.set_index("MESS_DATUM", inplace=True)
-test=hw_nd_hp2["PS"] - dwd_nd_hp2["RWS_10"]
+dwd_nd_hp2.set_index("Zeitstempel", inplace=True)
+test=hw_nd_hp2["PS"] - dwd_nd_hp2["Wert"]
 
 print(test)
 
 plt.figure(figsize=(10,6))
 plt.plot(hw_nd_hp2.index, hw_nd_hp2["PS"])
-plt.plot(dwd_nd_hp2.index, dwd_nd_hp2["RWS_10"])
+plt.plot(dwd_nd_hp2.index, dwd_nd_hp2["Wert"])
 plt.show()
 
 # wdata und halbstundenwerte ergänzend zusammenfügen für PS
@@ -94,11 +94,23 @@ mdata_nd_hp2 = mdata.loc[(mdata["Datetime"].dt.date >= pd.to_datetime("2023-09-0
 
 
 mdata_nd_hp2.set_index("Datetime", inplace=True)
-test=mdata_nd_hp2["Precipitation"] - dwd_nd_hp2["RWS_10"]
+test=mdata_nd_hp2["Precipitation"] - dwd_nd_hp2["Wert"]
 
 print(test)
 
 plt.figure(figsize=(10,6))
 plt.plot(hw_nd_hp2.index, hw_nd_hp2["PS"])
-plt.plot(dwd_nd_hp2.index, dwd_nd_hp2["RWS_10"])
+plt.plot(dwd_nd_hp2.index, dwd_nd_hp2["Wert"])
+plt.show()
+
+
+mdata.set_index("Datetime", inplace=True)
+data_OBS_DEU_PT10M_RR.set_index("Zeitstempel", inplace=True)
+common_indices = mdata.index.intersection(data_OBS_DEU_PT10M_RR.index)
+data_OBS_DEU_PT10M_RR = data_OBS_DEU_PT10M_RR.loc[common_indices]
+
+
+plt.figure(figsize=(30,5))
+plt.bar(data_OBS_DEU_PT10M_RR.index, data_OBS_DEU_PT10M_RR["Wert"], color="grey")
+plt.bar(mdata.index, mdata["Precipitation"], color="red")
 plt.show()

@@ -52,7 +52,7 @@ plt.gca().xaxis.set_major_formatter(date_format)
 plt.legend(loc="center", bbox_to_anchor=(0.5, -0.25), ncol = 2, frameon=False)
 plt.grid()
 plt.tight_layout()
-plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\TimeSeries VWC.pdf", format="pdf")
+#plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\TimeSeries VWC.pdf", format="pdf")
 plt.show()
 
 # Surface Temp
@@ -68,7 +68,7 @@ plt.gca().xaxis.set_major_formatter(date_format)
 plt.legend(loc="center", bbox_to_anchor=(0.5, -0.25), ncol = 2, frameon=False)
 plt.grid()
 plt.tight_layout()
-plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\TimeSeries ST.pdf", format="pdf")
+#plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\TimeSeries ST.pdf", format="pdf")
 plt.show()
 
 
@@ -94,7 +94,7 @@ ax1.grid(False)
 ax2.grid(False)
 ax1.grid(axis="y")
 plt.tight_layout()
-plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Boxplot TA rH WS.pdf", format="pdf")
+#plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Boxplot TA rH WS.pdf", format="pdf")
 plt.show()
 
 
@@ -106,7 +106,7 @@ sns.boxplot(data=completed_data[["SWC_1_1_1", "TS_CS65X_1_1_1", "G_plate_1_1_1",
             whis=[10, 90], showmeans=True, meanprops={"marker":"x","markerfacecolor":"black", "markeredgecolor":"black", "markersize":10}, fliersize=3, fill=False)
 plt.grid(True)
 plt.xticks(ticks=[0,1,2,3], labels=["Sat.\nCoeff.\n(%)", "T$_{Soil}$\n(°C)", "Q$_G$ $_{HFP}$\n$W/m²$", "T$_{Surface}$\n(°C)"])
-plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Boxplot Green Roof SWC TS QG_HFP.pdf", format="pdf", bbox_inches="tight")
+#plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Boxplot Green Roof SWC TS QG_HFP.pdf", format="pdf", bbox_inches="tight")
 plt.show()
 
 # Hybrid Roof SWC, Bodentemperatur, Oberflächentemperatur, QG_HFP
@@ -117,7 +117,7 @@ sns.boxplot(data=completed_data[["SWC_1_1_2", "TS_CS65X_1_1_2", "G_plate_1_1_2",
             whis=[10, 90], showmeans=True, meanprops={"marker":"x","markerfacecolor":"black", "markeredgecolor":"black", "markersize":10}, fliersize=3, fill=False)
 plt.grid(True)
 plt.xticks(ticks=[0,1,2,3], labels=["Sat.\nCoeff.\n(%)", "T$_{Soil}$\n(°C)", "Q$_G$ $_{HFP}$\n$W/m²$", "T$_{Surface}$\n(°C)"])
-plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Boxplot Hybrid Roof SWC TS QG HFP.pdf", format="pdf", bbox_inches="tight")
+#plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Boxplot Hybrid Roof SWC TS QG HFP.pdf", format="pdf", bbox_inches="tight")
 plt.show()
 
 print(completed_data["TS_CS65X_1_1_1"].mean())
@@ -132,7 +132,7 @@ sns.boxplot(data=completed_data[["SW_IN", "LW_IN","SW_OUT_GR_Calculated", "SW_OU
 plt.grid(True)
 plt.ylabel("$W/m^2$")
 plt.xticks(ticks=[0,1,2,3,4,5], labels=["SW IN", "LW IN", "SW OUT GR", "SW OUT HR", "LW OUT GR", "LW OUT HR"])
-plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Boxplot Radiation.pdf", format="pdf", bbox_inches="tight")
+#plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Boxplot Radiation.pdf", format="pdf", bbox_inches="tight")
 plt.show()
 
 # Green Roof QE, QH, QG, Q* 
@@ -150,7 +150,7 @@ sns.boxplot(data=completed_data[["Q*_flux_gr", "QE_GR","QH_GR", "QG_GR"]],
 plt.grid(True)
 plt.ylabel("$W/m^2$")
 plt.xticks(ticks=[0,1,2,3], labels=["Q*", "Q$_E$", "Q$_H$", "Q$_G$"])
-plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Boxplot Green Roof Heat Fluxes.pdf", format="pdf", bbox_inches="tight")
+#plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Boxplot Green Roof Heat Fluxes.pdf", format="pdf", bbox_inches="tight")
 plt.show()
 
 # Hybrid Roof QE, QH, QG, Q* 
@@ -168,7 +168,7 @@ sns.boxplot(data=completed_data[["Q*_flux_hr", "QE_HR","QH_HR", "QG_HR"]],
 plt.grid(True)
 plt.ylabel("$W/m^2$")
 plt.xticks(ticks=[0,1,2,3], labels=["Q*", "Q$_E$", "Q$_H$", "Q$_G$"])
-plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Boxplot Hybrid Roof Heat Fluxes.pdf", format="pdf", bbox_inches="tight")
+#plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Boxplot Hybrid Roof Heat Fluxes.pdf", format="pdf", bbox_inches="tight")
 plt.show()
 
 print(completed_data["QE_GR"].quantile(0.9))
@@ -195,7 +195,7 @@ ax2.set_yticks([-12, -6, 0, 6, 12, 18])
 ax1.grid(False)
 ax2.grid(False)
 ax1.grid(axis="y")
-plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Boxplot Heiztage TA rH WS.pdf", format="pdf", bbox_inches="tight")
+#plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Boxplot Heiztage TA rH WS.pdf", format="pdf", bbox_inches="tight")
 plt.show()
 
 
@@ -209,7 +209,7 @@ sns.boxplot(data=completed_data.loc[(completed_data.groupby(completed_data["Date
             meanprops={"marker":"x","markerfacecolor":"white", "markeredgecolor":"white"})
 plt.grid(True)
 plt.xticks(ticks=[0,1,2,3], labels=["Saturation Coefficient\n(%)", "Soil Temperature\n(°C)", "Surface Temperature\n(°C)", "Q$_G$ $_{Heat}$ $_{Flux}$ $_{Plate}$"])
-plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Boxplot Heiztage Green Roof SWC TS ST QGHFP.pdf", format="pdf", bbox_inches="tight")
+#plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Boxplot Heiztage Green Roof SWC TS ST QGHFP.pdf", format="pdf", bbox_inches="tight")
 plt.show()
 
 
@@ -222,7 +222,7 @@ sns.boxplot(data=completed_data.loc[(completed_data.groupby(completed_data["Date
             meanprops={"marker":"x","markerfacecolor":"white", "markeredgecolor":"white"})
 plt.grid(True)
 plt.xticks(ticks=[0,1,2,3], labels=["Saturation Coefficient\n(%)", "Soil Temperature\n(°C)", "Surface Temperature\n(°C)", "Q$_G$ $_{Heat}$ $_{Flux}$ $_{Plate}$\nduring Frost Days"])
-plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Boxplot Heiztage Hybrid Roof SWC TS ST QG_HFP.pdf", format="pdf", bbox_inches="tight")
+#plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Boxplot Heiztage Hybrid Roof SWC TS ST QG_HFP.pdf", format="pdf", bbox_inches="tight")
 plt.show()
 
 # Strahlung
@@ -234,7 +234,7 @@ sns.boxplot(data=completed_data.loc[(completed_data.groupby(completed_data["Date
 plt.grid(True)
 plt.ylabel("$W/m^2$")
 plt.xticks(ticks=[0,1,2,3,4,5], labels=["SW IN", "LW IN", "SW OUT GR", "SW OUT HR", "LW OUT GR", "LW OUT HR"])
-plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Boxplot Heiztage Radiation.pdf", format="pdf", bbox_inches="tight")
+#plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Boxplot Heiztage Radiation.pdf", format="pdf", bbox_inches="tight")
 plt.show()
 
 # Green Roof QE, QH, QG, Q* 
@@ -246,7 +246,7 @@ sns.boxplot(data=completed_data.loc[(completed_data.groupby(completed_data["Date
 plt.grid(True)
 plt.ylabel("$W/m^2$")
 plt.xticks(ticks=[0,1,2,3], labels=["Q*", "Q$_E$", "Q$_H$", "Q$_G$"])
-plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Boxplot Heiztage Green Roof Heat Fluxes.pdf", format="pdf", bbox_inches="tight")
+#plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Boxplot Heiztage Green Roof Heat Fluxes.pdf", format="pdf", bbox_inches="tight")
 plt.show()
 
 # Hybrid Roof QE, QH, QG, Q* 
@@ -258,7 +258,7 @@ sns.boxplot(data=completed_data.loc[(completed_data.groupby(completed_data["Date
 plt.grid(True)
 plt.ylabel("$W/m^2$")
 plt.xticks(ticks=[0,1,2,3], labels=["Q*", "Q$_E$", "Q$_H$", "Q$_G$"])
-plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Boxplot Heiztage Hybrid Roof Heat Fluxes.pdf", format="pdf", bbox_inches="tight")
+#plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Boxplot Heiztage Hybrid Roof Heat Fluxes.pdf", format="pdf", bbox_inches="tight")
 plt.show()
 
 
@@ -285,7 +285,7 @@ ax2.set_yticks([0, 7, 14, 21, 28, 35])
 ax1.grid(False)
 ax2.grid(False)
 ax1.grid(axis="y")
-plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Boxplot Sommertage TA rH WS.pdf", format="pdf", bbox_inches="tight")
+#plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Boxplot Sommertage TA rH WS.pdf", format="pdf", bbox_inches="tight")
 plt.show()
 
 
@@ -298,7 +298,7 @@ sns.boxplot(data=completed_data.loc[completed_data.groupby(completed_data["Datet
             meanprops={"marker":"x","markerfacecolor":"white", "markeredgecolor":"white"})
 plt.grid(True)
 plt.xticks(ticks=[0,1,2,3], labels=["Saturation Coefficient\n(%)", "Soil Temperature\n(°C)", "Surface Temperature\n(°C)", "Q$_G$ $_{Heat}$ $_{Flux}$ $_{Plate}$"])
-plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Boxplot Sommertage Green Roof SWC TS ST QG_HFP.pdf", format="pdf", bbox_inches="tight")
+#plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Boxplot Sommertage Green Roof SWC TS ST QG_HFP.pdf", format="pdf", bbox_inches="tight")
 plt.show()
 
 
@@ -311,7 +311,7 @@ sns.boxplot(data=completed_data.loc[completed_data.groupby(completed_data["Datet
             meanprops={"marker":"x","markerfacecolor":"white", "markeredgecolor":"white"})
 plt.grid(True)
 plt.xticks(ticks=[0,1,2,3], labels=["Saturation Coefficient\n(%)", "Soil Temperature\n(°C)", "Surface Temperature\n(°C)", "Q$_G$ $_{Heat}$ $_{Flux}$ $_{Plate}$\nduring Frost Days"])
-plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Boxplot Sommertage Hybrid Roof SWC TS ST QG_HFP.pdf", format="pdf")
+#plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Boxplot Sommertage Hybrid Roof SWC TS ST QG_HFP.pdf", format="pdf")
 plt.show()
 
 # Strahlung
@@ -324,7 +324,7 @@ plt.grid(True)
 plt.ylim(-50, 1000)
 plt.ylabel("$W/m^2$")
 plt.xticks(ticks=[0,1,2,3,4,5], labels=["SW IN", "LW IN", "SW OUT GR", "SW OUT HR", "LW OUT GR", "LW OUT HR"])
-plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Boxplot Sommertage Radiation.pdf", format="pdf", bbox_inches="tight")
+#plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Boxplot Sommertage Radiation.pdf", format="pdf", bbox_inches="tight")
 plt.show()
 
 # Green Roof QE, QH, QG, Q* 
@@ -336,7 +336,7 @@ sns.boxplot(data=completed_data.loc[completed_data.groupby(completed_data["Datet
 plt.grid(True)
 plt.ylabel("$W/m^2$")
 plt.xticks(ticks=[0,1,2,3], labels=["Q*", "Q$_E$", "Q$_H$", "Q$_G$"])
-plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Boxplot Sommertage Green Roof Heat Fluxes.pdf", format="pdf", bbox_inches="tight")
+#plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Boxplot Sommertage Green Roof Heat Fluxes.pdf", format="pdf", bbox_inches="tight")
 plt.show()
 
 # Hybrid Roof QE, QH, QG, Q* 
@@ -348,7 +348,7 @@ sns.boxplot(data=completed_data.loc[completed_data.groupby(completed_data["Datet
 plt.grid(True)
 plt.ylabel("$W/m^2$")
 plt.xticks(ticks=[0,1,2,3], labels=["Q*", "Q$_E$", "Q$_H$", "Q$_G$"])
-plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Boxplot Sommertage Hybrid Roof Heat Fluxes.pdf", format="pdf", bbox_inches="tight")
+#plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Boxplot Sommertage Hybrid Roof Heat Fluxes.pdf", format="pdf", bbox_inches="tight")
 plt.show()
 
 ## Mittlere Tagesgänge
@@ -375,7 +375,7 @@ ax2.set_yticks([5, 7, 9, 11, 13, 15])
 ax1.set_xticks(completed_data.groupby("Time")["RH_1_1_2"].mean().index[::6], labels=timelabels, rotation=45, ha="right")
 ax1.legend(loc="center", bbox_to_anchor=(0.15, -0.35), ncol = 1, frameon=False)
 ax2.legend(loc="center", bbox_to_anchor=(0.75, -0.35), ncol = 2, frameon=False)
-plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\MDC TA rH WS.pdf", format="pdf", bbox_inches="tight")
+#plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\MDC TA rH WS.pdf", format="pdf", bbox_inches="tight")
 plt.show()
 
 # Green Roof QE, QH, QG, Q* 
@@ -393,7 +393,7 @@ plt.ylabel("$W/m^2$")
 plt.xlim(completed_data.groupby("Time")["SWC_1_1_1"].mean().index.min(), completed_data.groupby("Time")["SWC_1_1_1"].mean().index.max())
 plt.xticks(completed_data.groupby("Time")["SWC_1_1_1"].mean().index[::6], labels=timelabels)
 plt.legend(loc="center", bbox_to_anchor=(0.5, -0.15), ncol=4, frameon=False)
-plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\MDC Green Roof Heat Fluxes.pdf", format="pdf", bbox_inches="tight")
+#plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\MDC Green Roof Heat Fluxes.pdf", format="pdf", bbox_inches="tight")
 plt.show()
 
 
@@ -413,7 +413,7 @@ plt.ylabel("$W/m^2$")
 plt.xlim(subset.groupby("Time")["SWC_1_1_1"].mean().index.min(), subset.groupby("Time")["SWC_1_1_1"].mean().index.max())
 plt.xticks(subset.groupby("Time")["SWC_1_1_1"].mean().index[::6], labels=timelabels)
 plt.legend(loc="center", bbox_to_anchor=(0.5, -0.15), ncol=4, frameon=False)
-plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\MDC Green Roof Heat Fluxes no NaNs.pdf", format="pdf", bbox_inches="tight")
+#plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\MDC Green Roof Heat Fluxes no NaNs.pdf", format="pdf", bbox_inches="tight")
 plt.show()
 
 # Hybrid Roof QE, QH, QG, Q* 
@@ -432,7 +432,7 @@ plt.ylabel("$W/m^2$")
 plt.xlim(completed_data.groupby("Time")["SWC_1_1_2"].mean().index.min(), completed_data.groupby("Time")["SWC_1_1_2"].mean().index.max())
 plt.xticks(completed_data.groupby("Time")["SWC_1_1_2"].mean().index[::6], labels=timelabels)
 plt.legend(loc="center", bbox_to_anchor=(0.5, -0.15), ncol=5, frameon=False)
-plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\MDC Hybrid Roof Heat Fluxes.pdf", format="pdf", bbox_inches="tight")
+#plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\MDC Hybrid Roof Heat Fluxes.pdf", format="pdf", bbox_inches="tight")
 plt.show()
 
 subset = completed_data.dropna(subset=["QE_GR", "QG_GR", "QH_GR", "QE_HR", "QG_HR", "QH_HR", "GR_ST", "HR_ST", "Q*_flux_gr", "Q*_rad_gr", "Q*_flux_hr", "Q*_rad_hr", "LW_IN", "SW_IN", "LW_OUT_GR_Calculated", "LW_OUT_HR_Calculated"])
@@ -452,7 +452,7 @@ plt.ylabel("$W/m^2$")
 plt.xlim(subset.groupby("Time")["SWC_1_1_2"].mean().index.min(), subset.groupby("Time")["SWC_1_1_2"].mean().index.max())
 plt.xticks(subset.groupby("Time")["SWC_1_1_2"].mean().index[::6], labels=timelabels)
 plt.legend(loc="center", bbox_to_anchor=(0.5, -0.15), ncol=5, frameon=False)
-plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\MDC Hybrid Roof Heat Fluxes no NaNs.pdf", format="pdf", bbox_inches="tight")
+#plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\MDC Hybrid Roof Heat Fluxes no NaNs.pdf", format="pdf", bbox_inches="tight")
 plt.show()
 
 
@@ -516,7 +516,7 @@ ax1.set_yticks([13.5, 13.75, 14])
 ax2.set_yticks([-5, 0, 5, 10, 15])
 ax1.legend(loc="center", bbox_to_anchor=(0.15, -0.4), ncol = 4, frameon=False)
 ax2.legend(loc="center", bbox_to_anchor=(0.75, -0.4), ncol = 4, frameon=False)
-plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\MDC Green Roof SWC TS QG HFP.pdf", format="pdf", bbox_inches="tight")
+#plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\MDC Green Roof SWC TS QG HFP.pdf", format="pdf", bbox_inches="tight")
 plt.show()
 
 # Hybrid Roof SWC, Bodentemperatur, QG_HFP
@@ -541,7 +541,7 @@ ax1.set_yticks([62.5, 63.25, 64])
 ax2.set_yticks([-7, -2, 3, 8, 13])
 ax1.legend(loc="center", bbox_to_anchor=(0.15, -0.4), ncol = 4, frameon=False)
 ax2.legend(loc="center", bbox_to_anchor=(0.75, -0.4), ncol = 4, frameon=False)
-plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\MDC Hybrid Roof SWC TS QG HFP.pdf", format="pdf", bbox_inches="tight")
+#plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\MDC Hybrid Roof SWC TS QG HFP.pdf", format="pdf", bbox_inches="tight")
 plt.show()
 
 # ST, SW IN, TA, RH
@@ -561,7 +561,7 @@ ax2.legend(loc="center", bbox_to_anchor=(0.75, -0.1), ncol = 3, frameon=False)
 ax1.set_ylabel("rel. Humidity (%) / Radiation ($W/m^2$)")
 ax2.set_ylabel("Temperature (°C)")
 plt.grid()
-plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\MDC ST SW TA RH.pdf", format="pdf", bbox_inches="tight")
+#plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\MDC ST SW TA RH.pdf", format="pdf", bbox_inches="tight")
 plt.show()
 
 # QE GR vs TA, rH, SW IN, LW IN, and Windspeed
@@ -614,7 +614,7 @@ plt.xlim(completed_data.groupby("Time")["QE_GR"].mean().index.min(),
          completed_data.groupby("Time")["QE_GR"].mean().index.max())
 ax1.set_xticks(completed_data.groupby("Time")["QE_GR"].mean().index[::6], labels=timelabels, rotation=45)
 plt.grid()
-plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\MDC Green Roof QE TA RH SW LW.pdf", format="pdf", bbox_inches="tight")
+#plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\MDC Green Roof QE TA RH SW LW.pdf", format="pdf", bbox_inches="tight")
 plt.show()
 
 # QH GR vs TA, rH, SW IN, LW IN, and Windspeed
@@ -667,7 +667,7 @@ plt.xlim(completed_data.groupby("Time")["QE_GR"].mean().index.min(),
          completed_data.groupby("Time")["QE_GR"].mean().index.max())
 ax1.set_xticks(completed_data.groupby("Time")["QE_GR"].mean().index[::6], labels=timelabels, rotation=45)
 plt.grid()
-plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\MDC Green Roof QH TA RH SW LW.pdf", format="pdf", bbox_inches="tight")
+#plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\MDC Green Roof QH TA RH SW LW.pdf", format="pdf", bbox_inches="tight")
 plt.show()
 
 # QG GR vs TA, rH, SW IN, LW IN, and Windspeed
@@ -720,7 +720,7 @@ plt.xlim(completed_data.groupby("Time")["QE_GR"].mean().index.min(),
          completed_data.groupby("Time")["QE_GR"].mean().index.max())
 ax1.set_xticks(completed_data.groupby("Time")["QE_GR"].mean().index[::6], labels=timelabels, rotation=45)
 plt.grid()
-plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\MDC Green Roof QG TA RH SW LW.pdf", format="pdf", bbox_inches="tight")
+#plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\MDC Green Roof QG TA RH SW LW.pdf", format="pdf", bbox_inches="tight")
 plt.show()
 
 
@@ -774,7 +774,7 @@ plt.xlim(completed_data.groupby("Time")["QE_HR"].mean().index.min(),
          completed_data.groupby("Time")["QE_HR"].mean().index.max())
 ax1.set_xticks(completed_data.groupby("Time")["QE_HR"].mean().index[::6], labels=timelabels, rotation=45)
 plt.grid()
-plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\MDC Hybrid Roof QE TA RH SW LW.pdf", format="pdf", bbox_inches="tight")
+#plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\MDC Hybrid Roof QE TA RH SW LW.pdf", format="pdf", bbox_inches="tight")
 plt.show()
 
 # QH HR vs TA, rH, SW IN, LW IN, and Windspeed
@@ -827,7 +827,7 @@ plt.xlim(completed_data.groupby("Time")["QE_HR"].mean().index.min(),
          completed_data.groupby("Time")["QE_HR"].mean().index.max())
 ax1.set_xticks(completed_data.groupby("Time")["QE_HR"].mean().index[::6], labels=timelabels, rotation=45)
 plt.grid()
-plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\MDC Hybrid Roof QH TA RH SW LW.pdf", format="pdf", bbox_inches="tight")
+#plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\MDC Hybrid Roof QH TA RH SW LW.pdf", format="pdf", bbox_inches="tight")
 plt.show()
 
 # QG HR vs TA, rH, SW IN, LW IN, and Windspeed
@@ -880,7 +880,7 @@ plt.xlim(completed_data.groupby("Time")["QE_HR"].mean().index.min(),
          completed_data.groupby("Time")["QE_HR"].mean().index.max())
 ax1.set_xticks(completed_data.groupby("Time")["QE_HR"].mean().index[::6], labels=timelabels, rotation=45)
 plt.grid()
-plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\MDC Hybrid Roof QG TA RH SW LW.pdf", format="pdf", bbox_inches="tight")
+#plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\MDC Hybrid Roof QG TA RH SW LW.pdf", format="pdf", bbox_inches="tight")
 plt.show()
 
 # Strahlungen
@@ -902,7 +902,7 @@ plt.ylabel("$W/m^2$")
 plt.xlim(completed_data.groupby("Time")["SW_IN"].mean().index.min(), completed_data.groupby("Time")["SW_IN"].mean().index.max())
 plt.xticks(completed_data.groupby("Time")["SW_IN"].mean().index[::6], labels=timelabels)
 plt.legend(loc="center", bbox_to_anchor=(0.5, -0.2), ncol=4, frameon=False)
-plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\MDC Strahlung.pdf", format="pdf", bbox_inches="tight")
+#plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\MDC Strahlung.pdf", format="pdf", bbox_inches="tight")
 plt.show()
 
 subset = completed_data.dropna(subset=["QE_GR", "QG_GR", "QH_GR", "QE_HR", "QG_HR", "QH_HR", "GR_ST", "HR_ST", "Q*_flux_gr", "Q*_rad_gr", "Q*_flux_hr", "Q*_rad_hr", "LW_IN", "SW_IN", "LW_OUT_GR_Calculated", "LW_OUT_HR_Calculated"])
@@ -925,7 +925,7 @@ plt.ylabel("$W/m^2$")
 plt.xlim(subset.groupby("Time")["SW_IN"].mean().index.min(), subset.groupby("Time")["SW_IN"].mean().index.max())
 plt.xticks(subset.groupby("Time")["SW_IN"].mean().index[::6], labels=timelabels)
 plt.legend(loc="center", bbox_to_anchor=(0.5, -0.2), ncol=4, frameon=False)
-plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\MDC Strahlung no NaNs.pdf", format="pdf", bbox_inches="tight")
+#plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\MDC Strahlung no NaNs.pdf", format="pdf", bbox_inches="tight")
 plt.show()
 
 
@@ -953,7 +953,7 @@ ax2.set_yticks([0, 3, 6, 9])
 plt.xticks(completed_data.groupby("Time")["RH_1_1_2"].mean().index[::6], labels=timelabels)
 ax1.legend(loc="center", bbox_to_anchor=(0.2, -0.2), ncol = 1, frameon=False)
 ax2.legend(loc="center", bbox_to_anchor=(0.7, -0.2), ncol = 2, frameon=False)
-plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\MDC Heiztage TA rH WS.pdf", format="pdf", bbox_inches="tight")
+#plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\MDC Heiztage TA rH WS.pdf", format="pdf", bbox_inches="tight")
 plt.show()
 
 
@@ -976,7 +976,7 @@ plt.ylabel("$W/m^2$")
 plt.xlim(completed_data.groupby("Time")["RH_1_1_2"].mean().index.min(), completed_data.groupby("Time")["RH_1_1_2"].mean().index.max())
 plt.xticks(completed_data.groupby("Time")["RH_1_1_2"].mean().index[::6], labels=timelabels)
 plt.legend(loc="center", bbox_to_anchor=(0.5, -0.2), ncol = 4, frameon=False)
-plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\MDC Heiztage Green Roof Heat Fluxes.pdf", format="pdf", bbox_inches="tight")
+#plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\MDC Heiztage Green Roof Heat Fluxes.pdf", format="pdf", bbox_inches="tight")
 plt.show()
 
 # Hybrid Roof QE, QH, QG, Q* 
@@ -1000,7 +1000,7 @@ plt.ylabel("$W/m^2$")
 plt.xlim(completed_data.groupby("Time")["RH_1_1_2"].mean().index.min(), completed_data.groupby("Time")["RH_1_1_2"].mean().index.max())
 plt.xticks(completed_data.groupby("Time")["RH_1_1_2"].mean().index[::6], labels=timelabels)
 plt.legend(loc="center", bbox_to_anchor=(0.5, -0.2), ncol = 4, frameon=False)
-plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\MDC Heiztage Hybrid Roof Heat Fluxes.pdf", format="pdf", bbox_inches="tight")
+#plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\MDC Heiztage Hybrid Roof Heat Fluxes.pdf", format="pdf", bbox_inches="tight")
 plt.show()
 
 # Green Roof SWC, Bodentemperatur, Oberflächentemperatur, QG_HFP
@@ -1030,7 +1030,7 @@ plt.xlim(completed_data.groupby("Time")["SWC_1_1_1"].mean().index.min(), complet
 plt.xticks(completed_data.groupby("Time")["SWC_1_1_1"].mean().index[::6], labels=timelabels)
 ax1.legend(loc="center", bbox_to_anchor=(0.2, -0.15), ncol = 4, frameon=False)
 ax2.legend(loc="center", bbox_to_anchor=(0.8, -0.15), ncol = 4, frameon=False)
-plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\MDC Heiztage Green Roof SWC ST TS QG HFP.pdf", format="pdf", bbox_inches="tight")
+#plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\MDC Heiztage Green Roof SWC ST TS QG HFP.pdf", format="pdf", bbox_inches="tight")
 plt.show()
 
 
@@ -1061,7 +1061,7 @@ plt.xlim(completed_data.groupby("Time")["SWC_1_1_1"].mean().index.min(), complet
 plt.xticks(completed_data.groupby("Time")["SWC_1_1_1"].mean().index[::6], labels=timelabels)
 ax1.legend(loc="center", bbox_to_anchor=(0.3, -0.15), ncol = 4, frameon=False)
 ax2.legend(loc="center", bbox_to_anchor=(0.9, -0.15), ncol = 4, frameon=False)
-plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\MDC Heiztage Hybrid Roof SWC ST TS QG HFP.pdf", format="pdf", bbox_inches="tight")
+#plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\MDC Heiztage Hybrid Roof SWC ST TS QG HFP.pdf", format="pdf", bbox_inches="tight")
 plt.show()
 
 # Strahlungen
@@ -1092,7 +1092,7 @@ plt.ylabel("$W/m^2$")
 plt.xlim(completed_data.groupby("Time")["SW_IN"].mean().index.min(), completed_data.groupby("Time")["SW_IN"].mean().index.max())
 plt.xticks(completed_data.groupby("Time")["SW_IN"].mean().index[::6], labels=timelabels)
 plt.legend(loc="center", bbox_to_anchor=(0.5, -0.2), ncol = 4, frameon=False)
-plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\MDC Heiztage Strahlung.pdf", format="pdf", bbox_inches="tight")
+#plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\MDC Heiztage Strahlung.pdf", format="pdf", bbox_inches="tight")
 plt.show()
 
 ## Mittlere Tagesgänge Sommertage
@@ -1119,7 +1119,7 @@ ax2.set_yticks([0, 6, 12, 18, 24, 30])
 plt.xticks(completed_data.groupby("Time")["RH_1_1_2"].mean().index[::6], labels=timelabels)
 ax1.legend(loc="center", bbox_to_anchor=(0.2, -0.2), ncol = 1, frameon=False)
 ax2.legend(loc="center", bbox_to_anchor=(0.7, -0.2), ncol = 2, frameon=False)
-plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\MDC Sommertage TA rH WS.pdf", format="pdf", bbox_inches="tight")
+#plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\MDC Sommertage TA rH WS.pdf", format="pdf", bbox_inches="tight")
 plt.show()
 
 
@@ -1138,7 +1138,7 @@ plt.ylabel("$W/m^2$")
 plt.xlim(completed_data.groupby("Time")["RH_1_1_2"].mean().index.min(), completed_data.groupby("Time")["RH_1_1_2"].mean().index.max())
 plt.xticks(completed_data.groupby("Time")["RH_1_1_2"].mean().index[::6], labels=timelabels)
 plt.legend(loc="center", bbox_to_anchor=(0.5, -0.2), ncol = 4, frameon=False)
-plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\MDC Sommertage Green Roof Heat Fluxes.pdf", format="pdf", bbox_inches="tight")
+#plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\MDC Sommertage Green Roof Heat Fluxes.pdf", format="pdf", bbox_inches="tight")
 plt.show()
 
 
@@ -1158,7 +1158,7 @@ plt.ylabel("$W/m^2$")
 plt.xlim(completed_data.groupby("Time")["RH_1_1_2"].mean().index.min(), completed_data.groupby("Time")["RH_1_1_2"].mean().index.max())
 plt.xticks(completed_data.groupby("Time")["RH_1_1_2"].mean().index[::6], labels=timelabels)
 plt.legend(loc="center", bbox_to_anchor=(0.5, -0.2), ncol = 4, frameon=False)
-plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\MDC Sommertage Hybrid Roof Heat Fluxes.pdf", format="pdf", bbox_inches="tight")
+#plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\MDC Sommertage Hybrid Roof Heat Fluxes.pdf", format="pdf", bbox_inches="tight")
 plt.show()
 
 # Green Roof SWC, Bodentemperatur, Oberflächentemperatur, QG_HFP
@@ -1184,7 +1184,7 @@ plt.xlim(completed_data.groupby("Time")["SWC_1_1_1"].mean().index.min(), complet
 plt.xticks(completed_data.groupby("Time")["SWC_1_1_1"].mean().index[::6], labels=timelabels)
 ax1.legend(loc="center", bbox_to_anchor=(0.3, -0.15), ncol = 4, frameon=False)
 ax2.legend(loc="center", bbox_to_anchor=(0.9, -0.15), ncol = 4, frameon=False)
-plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\MDC Sommertage Green Roof SWC ST TS QG HFP.pdf", format="pdf", bbox_inches="tight")
+#plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\MDC Sommertage Green Roof SWC ST TS QG HFP.pdf", format="pdf", bbox_inches="tight")
 plt.show()
 
 
@@ -1211,7 +1211,7 @@ plt.xlim(completed_data.groupby("Time")["SWC_1_1_1"].mean().index.min(), complet
 plt.xticks(completed_data.groupby("Time")["SWC_1_1_1"].mean().index[::6], labels=timelabels)
 ax1.legend(loc="center", bbox_to_anchor=(0.3, -0.15), ncol = 4, frameon=False)
 ax2.legend(loc="center", bbox_to_anchor=(0.9, -0.15), ncol = 4, frameon=False)
-plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\MDC Sommertage Hybrid Roof SWC ST TS QG HFP.pdf", format="pdf", bbox_inches="tight")
+#plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\MDC Sommertage Hybrid Roof SWC ST TS QG HFP.pdf", format="pdf", bbox_inches="tight")
 plt.show()
 
 # Strahlungen
@@ -1234,7 +1234,7 @@ plt.ylabel("$W/m^2$")
 plt.xlim(completed_data.groupby("Time")["SW_IN"].mean().index.min(), completed_data.groupby("Time")["SW_IN"].mean().index.max())
 plt.xticks(completed_data.groupby("Time")["SW_IN"].mean().index[::6], labels=timelabels)
 plt.legend(loc="center", bbox_to_anchor=(0.5, -0.2), ncol = 4, frameon=False)
-plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\MDC Sommertage Strahlung.pdf", format="pdf", bbox_inches="tight")
+#plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\MDC Sommertage Strahlung.pdf", format="pdf", bbox_inches="tight")
 plt.show()
 
 
@@ -1318,7 +1318,7 @@ ax1.set_xticklabels(ax1.get_xticklabels(), rotation=45)
 ax1.legend(loc="center", bbox_to_anchor=(0.5, -0.25), ncol = 5, frameon=False)
 ax2.legend(loc="center", bbox_to_anchor=(0.5, -0.35), ncol = 2, frameon=False)
 plt.grid()
-plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Zeitreihe Hitzeperiode 1 TA SWCs .pdf", format="pdf", bbox_inches="tight")
+#plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Zeitreihe Hitzeperiode 1 TA SWCs .pdf", format="pdf", bbox_inches="tight")
 plt.show()
 
 
@@ -1337,7 +1337,7 @@ plt.legend(loc="center", bbox_to_anchor=(0.5, -0.25), ncol = 4, frameon=False)
 plt.xticks(HP_1["Datetime"][::48], HP_1["Datetime"].dt.strftime("%d. %b")[::48], rotation=45, ha="right")
 plt.grid(False)
 plt.grid(axis="y")
-plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Zeitreihe Hitzeperiode 1 Green Roof Heat Fluxes.pdf", format="pdf", bbox_inches="tight")
+#plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Zeitreihe Hitzeperiode 1 Green Roof Heat Fluxes.pdf", format="pdf", bbox_inches="tight")
 plt.show()
 
 
@@ -1355,7 +1355,7 @@ plt.legend(loc="center", bbox_to_anchor=(0.5, -0.25), ncol = 4, frameon=False)
 plt.xticks(HP_1["Datetime"][::48], HP_1["Datetime"].dt.strftime("%d. %b")[::48], rotation=45, ha="right")
 plt.grid(False)
 plt.grid(axis="y")
-plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Zeitreihe Hitzeperiode 1 Hybrid Roof Heat Fluxes.pdf", format="pdf", bbox_inches="tight")
+#plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Zeitreihe Hitzeperiode 1 Hybrid Roof Heat Fluxes.pdf", format="pdf", bbox_inches="tight")
 plt.show()
 
 print(HP_1["QH_GR"].mean()/HP_1["QE_GR"].mean())
@@ -1371,7 +1371,7 @@ plt.legend(loc="center", bbox_to_anchor=(0.5, -0.15), ncol = 2, frameon=False)
 plt.xticks(HP_1["Datetime"][::48], HP_1["Datetime"].dt.strftime("%d. %b")[::48])
 plt.grid(False)
 plt.grid(axis="y")
-plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Zeitreihe Hitzeperiode 1 QG HFP.pdf", format="pdf", bbox_inches="tight")
+#plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Zeitreihe Hitzeperiode 1 QG HFP.pdf", format="pdf", bbox_inches="tight")
 plt.show()
 
 # Plots zur HP_2 04. September bis zum 11. September
@@ -1405,7 +1405,7 @@ ax1.set_xticklabels(ax1.get_xticklabels(), rotation=45)
 ax1.legend(loc="center", bbox_to_anchor=(0.5, -0.25), ncol = 5, frameon=False)
 ax2.legend(loc="center", bbox_to_anchor=(0.5, -0.35), ncol = 2, frameon=False)
 plt.grid()
-plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Zeitreihe Hitzeperiode 2 TA SWCs .pdf", format="pdf", bbox_inches="tight")
+#plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Zeitreihe Hitzeperiode 2 TA SWCs .pdf", format="pdf", bbox_inches="tight")
 plt.show()
 
 
@@ -1424,7 +1424,7 @@ plt.legend(loc="center", bbox_to_anchor=(0.5, -0.25), ncol = 4, frameon=False)
 plt.xticks(HP_2["Datetime"][::48], HP_2["Datetime"].dt.strftime("%d. %b")[::48], rotation=45, ha="right")
 plt.grid(False)
 plt.grid(axis="y")
-plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Zeitreihe Hitzeperiode 2 Green Roof Heat Fluxes.pdf", format="pdf", bbox_inches="tight")
+#plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Zeitreihe Hitzeperiode 2 Green Roof Heat Fluxes.pdf", format="pdf", bbox_inches="tight")
 plt.show()
 
 
@@ -1442,7 +1442,7 @@ plt.legend(loc="center", bbox_to_anchor=(0.5, -0.25), ncol = 4, frameon=False)
 plt.xticks(HP_2["Datetime"][::48], HP_2["Datetime"].dt.strftime("%d. %b")[::48], rotation=45, ha="right")
 plt.grid(False)
 plt.grid(axis="y")
-plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Zeitreihe Hitzeperiode 2 Hybrid Roof Heat Fluxes.pdf", format="pdf", bbox_inches="tight")
+#plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Zeitreihe Hitzeperiode 2 Hybrid Roof Heat Fluxes.pdf", format="pdf", bbox_inches="tight")
 plt.show()
 
 print(HP_2["QH_GR"].mean()/HP_2["QE_GR"].mean())
@@ -1458,7 +1458,7 @@ plt.legend(loc="center", bbox_to_anchor=(0.5, -0.15), ncol = 2, frameon=False)
 plt.xticks(HP_2["Datetime"][::48], HP_2["Datetime"].dt.strftime("%d. %b")[::48])
 plt.grid(False)
 plt.grid(axis="y")
-plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Zeitreihe Hitzeperiode 2 QG HFP.pdf", format="pdf", bbox_inches="tight")
+#plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Zeitreihe Hitzeperiode 2 QG HFP.pdf", format="pdf", bbox_inches="tight")
 plt.show()
 
 print(HP_2["QE_GR"].mean()/(HP_2["QE_GR"].mean()+HP_2["QG_GR"].mean()+HP_2["QH_GR"].mean()))
@@ -1507,7 +1507,7 @@ ax1.set_xticklabels(ax1.get_xticklabels(), rotation=45)
 ax1.legend(loc="center", bbox_to_anchor=(0.5, -0.25), ncol = 5, frameon=False)
 ax2.legend(loc="center", bbox_to_anchor=(0.5, -0.35), ncol = 2, frameon=False)
 plt.grid()
-plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Zeitreihe Kälteperiode 1 TA SWCs .pdf", format="pdf", bbox_inches="tight")
+#plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Zeitreihe Kälteperiode 1 TA SWCs .pdf", format="pdf", bbox_inches="tight")
 plt.show()
 
 
@@ -1526,7 +1526,7 @@ plt.legend(loc="center", bbox_to_anchor=(0.5, -0.25), ncol = 4, frameon=False)
 plt.xticks(KP_1["Datetime"][::48], KP_1["Datetime"].dt.strftime("%d. %b")[::48], rotation=45, ha="right")
 plt.grid(False)
 plt.grid(axis="y")
-plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Zeitreihe Kälteperiode 1 Green Roof Heat Fluxes.pdf", format="pdf", bbox_inches="tight")
+#plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Zeitreihe Kälteperiode 1 Green Roof Heat Fluxes.pdf", format="pdf", bbox_inches="tight")
 plt.show()
 
 
@@ -1544,7 +1544,7 @@ plt.legend(loc="center", bbox_to_anchor=(0.5, -0.25), ncol = 4, frameon=False)
 plt.xticks(KP_1["Datetime"][::48], KP_1["Datetime"].dt.strftime("%d. %b")[::48], rotation=45, ha="right")
 plt.grid(False)
 plt.grid(axis="y")
-plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Zeitreihe Kälteperiode 1 Hybrid Roof Heat Fluxes.pdf", format="pdf", bbox_inches="tight")
+#plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Zeitreihe Kälteperiode 1 Hybrid Roof Heat Fluxes.pdf", format="pdf", bbox_inches="tight")
 plt.show()
 
 print(KP_1["QH_GR"].mean()/KP_1["QE_GR"].mean())
@@ -1560,7 +1560,7 @@ plt.legend(loc="center", bbox_to_anchor=(0.5, -0.15), ncol = 2, frameon=False)
 plt.xticks(KP_1["Datetime"][::48], KP_1["Datetime"].dt.strftime("%d. %b")[::48])
 plt.grid(False)
 plt.grid(axis="y")
-plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Zeitreihe Kälteperiode 1 QG HFP.pdf", format="pdf", bbox_inches="tight")
+#plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Zeitreihe Kälteperiode 1 QG HFP.pdf", format="pdf", bbox_inches="tight")
 plt.show()
 
 # Plots zur KP_2
@@ -1594,7 +1594,7 @@ ax1.set_xticklabels(ax1.get_xticklabels(), rotation=45)
 ax1.legend(loc="center", bbox_to_anchor=(0.5, -0.25), ncol = 5, frameon=False)
 ax2.legend(loc="center", bbox_to_anchor=(0.5, -0.35), ncol = 2, frameon=False)
 plt.grid()
-plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Zeitreihe Kälteperiode 2 TA SWCs .pdf", format="pdf", bbox_inches="tight")
+#plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Zeitreihe Kälteperiode 2 TA SWCs .pdf", format="pdf", bbox_inches="tight")
 plt.show()
 
 
@@ -1613,7 +1613,7 @@ plt.legend(loc="center", bbox_to_anchor=(0.5, -0.25), ncol = 4, frameon=False)
 plt.xticks(KP_2["Datetime"][::48], KP_2["Datetime"].dt.strftime("%d. %b")[::48], rotation=45, ha="right")
 plt.grid(False)
 plt.grid(axis="y")
-plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Zeitreihe Kälteperiode 2 Green Roof Heat Fluxes.pdf", format="pdf", bbox_inches="tight")
+#plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Zeitreihe Kälteperiode 2 Green Roof Heat Fluxes.pdf", format="pdf", bbox_inches="tight")
 plt.show()
 
 
@@ -1631,7 +1631,7 @@ plt.legend(loc="center", bbox_to_anchor=(0.5, -0.25), ncol = 4, frameon=False)
 plt.xticks(KP_2["Datetime"][::48], KP_2["Datetime"].dt.strftime("%d. %b")[::48], rotation=45, ha="right")
 plt.grid(False)
 plt.grid(axis="y")
-plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Zeitreihe Kälteperiode 2 Hybrid Roof Heat Fluxes.pdf", format="pdf", bbox_inches="tight")
+#plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Zeitreihe Kälteperiode 2 Hybrid Roof Heat Fluxes.pdf", format="pdf", bbox_inches="tight")
 plt.show()
 
 print(KP_2["QH_GR"].mean()/KP_2["QE_GR"].mean())
@@ -1647,7 +1647,7 @@ plt.legend(loc="center", bbox_to_anchor=(0.5, -0.15), ncol = 2, frameon=False)
 plt.xticks(KP_2["Datetime"][::48], KP_2["Datetime"].dt.strftime("%d. %b")[::48])
 plt.grid(False)
 plt.grid(axis="y")
-plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Zeitreihe Kälteperiode 2 QG HFP.pdf", format="pdf", bbox_inches="tight")
+#plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Zeitreihe Kälteperiode 2 QG HFP.pdf", format="pdf", bbox_inches="tight")
 plt.show()
 
 
@@ -1668,7 +1668,7 @@ ax2.set_ylabel("Air Temperature (°C)")
 ax1.set_xticklabels(["Aug 2023", "Sep 2023", "Oct 2023", "Nov 2023", "Dec 2023", "Jan 2024", "Feb 2024", "Mar 2024"])
 ax1.legend(loc="center", bbox_to_anchor=(0.25, -0.15), ncol = 1, frameon=False)
 ax2.legend(loc="center", bbox_to_anchor=(0.75, -0.15), ncol = 1, frameon=False)
-plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Wetter.pdf", format="pdf", bbox_inches="tight")
+#plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Wetter.pdf", format="pdf", bbox_inches="tight")
 plt.tight_layout()
 plt.grid()
 plt.show()
@@ -1698,7 +1698,7 @@ ax1.legend(loc="center", bbox_to_anchor=(0.25, -0.25), ncol=1, frameon=False)
 ax2.legend(loc="center", bbox_to_anchor=(0.75, -0.25), ncol=1, frameon=False)
 plt.title("2023/2024")
 plt.tight_layout()
-plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Wetter monatlich.pdf", format="pdf", bbox_inches="tight")
+#plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Wetter monatlich.pdf", format="pdf", bbox_inches="tight")
 plt.grid()
 plt.show()
 
@@ -1741,7 +1741,7 @@ for i, year in enumerate(klima_t.index.year.unique()):
     axs[row, col].set_xticks(temp_year.index.month[::3])
     axs[row, col].set_xticklabels(temp_year.index.strftime("%b")[::3])
 plt.tight_layout()
-plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Klimadaten.pdf", format="pdf", bbox_inches="tight")
+#plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Klimadaten.pdf", format="pdf", bbox_inches="tight")
 plt.show()
 
 
@@ -1880,7 +1880,7 @@ plt.ylabel("$W/m^2$")
 plt.xlim(completed_data.groupby("Time")["SW_IN"].mean().index.min(), completed_data.groupby("Time")["SW_IN"].mean().index.max())
 plt.xticks(completed_data.groupby("Time")["SW_IN"].mean().index[::6], labels=timelabels)
 plt.legend(loc="center", bbox_to_anchor=(0.5, -0.2), ncol=4, frameon=False)
-plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\MDC rad flux dif.pdf", format="pdf", bbox_inches="tight")
+#plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\MDC rad flux dif.pdf", format="pdf", bbox_inches="tight")
 plt.show()
 
 
@@ -1898,7 +1898,7 @@ plt.xlabel("Hour of Day")
 plt.ylabel("W/$m^2$")
 plt.grid(False)
 plt.grid(axis="y")
-plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\MDC QE vs SW.pdf", format="pdf", bbox_inches="tight")
+#plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\MDC QE vs SW.pdf", format="pdf", bbox_inches="tight")
 plt.show()
 
 subset = completed_data.dropna(subset=["QE_GR", "QE_HR", "LW_IN", "SW_IN", "SW_OUT_GR_Calculated", "SW_OUT_HR_Calculated"])
@@ -2045,6 +2045,10 @@ cr_albedo = cr_albedo[~cr_albedo["3 Year Solar Reflectance"].str.contains("*", r
 cr_albedo["3 Year Solar Reflectance"] = pd.to_numeric(cr_albedo["3 Year Solar Reflectance"])
 print(cr_albedo["Initial Solar Reflectance"].mean()) # 0.77
 print(cr_albedo["3 Year Solar Reflectance"].mean()) # 0.66
+
+# mean Air Temp and Precipitation sums per month
+# precipitation to follow
+print(monthly_temperature)
 
 
 

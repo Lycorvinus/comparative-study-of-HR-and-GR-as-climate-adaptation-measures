@@ -74,7 +74,7 @@ for column in wdata.select_dtypes(include="object").columns:
 
 
 # 30 Minuten Mittelwerte für wdata
-wdata = wdata.resample("30min", on="Datetime").mean()
+wdata = wdata.resample("30min", on="Datetime").sum()
 wdata.to_csv("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Daten\\wdata.csv", sep = ",", header = True)
 print(wdata)
 
