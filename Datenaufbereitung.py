@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 from matplotlib.dates import MonthLocator, DateFormatter
 
 
-files = glob.glob("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Daten\\formatierte Daten\\*Flux_CSFormat*.dat") # Liste für das iterative einlesen von den Time_Series Dateien
+files = glob.glob("C:\\Users\\linus\\OneDrive\\Dokumente\\Publikation\\Data\\formatierte Daten\\*Flux_CSFormat*.dat") # Liste für das iterative einlesen von den Time_Series Dateien
 # Importieren der Flux_CSFormat Dateien Header über skiprows ausgelassen und Spaltennamen über skiprows belassen
 logger_data = pd.concat([pd.read_csv(f, skiprows=[0, 2, 3], sep=",", low_memory=False) for f in files], ignore_index=True)  
 logger_data["TIMESTAMP"] = pd.to_datetime(logger_data["TIMESTAMP"].str.strip(), yearfirst=True, format="mixed") # Date Time Formatierung
@@ -51,7 +51,7 @@ print(logger_data)
 print(logger_data[logger_data["Date"] ==  ts])
 
 logger_data = logger_data.rename(columns={"TIMESTAMP": "Datetime"})
-logger_data.to_csv("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Daten\\logger_data.csv", sep = ",", header = True, index=False)
+logger_data.to_csv("C:\\Users\\linus\\OneDrive\\Dokumente\\Publikation\\Data\\logger_data.csv", sep = ",", header = True, index=False)
 
 
 
@@ -59,7 +59,7 @@ logger_data.to_csv("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Daten\\
 # Einlesen der Wetterdaten von der IGÖ Dachstation
 
 # Einzelne Datensätze
-files = glob.glob("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Daten\\Wetterstation\\*TOA5*.dat") # Liste für das iterative einlesen von Daten der Wetterstation
+files = glob.glob("C:\\Users\\linus\\OneDrive\\Dokumente\\Publikation\\Data\\Wetterstation\\*TOA5*.dat") # Liste für das iterative einlesen von Daten der Wetterstation
 # Importieren der Flux_CSFormat Dateien Header über skiprows ausgelassen und Spaltennamen über skiprows belassen
 wdata = pd.concat([pd.read_csv(f, skiprows=[0, 2, 3], sep=",", low_memory=False) for f in files], ignore_index=True)
 print(wdata.dtypes) 
@@ -75,13 +75,13 @@ for column in wdata.select_dtypes(include="object").columns:
 
 # 30 Minuten Mittelwerte für wdata
 wdata = wdata.resample("30min", on="Datetime").sum()
-wdata.to_csv("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Daten\\wdata.csv", sep = ",", header = True)
+wdata.to_csv("C:\\Users\\linus\\OneDrive\\Dokumente\\Publikation\\Data\\wdata.csv", sep = ",", header = True)
 print(wdata)
 
 
 
 # Daten vom 01.07.2023 bis zum 31.01.2024 einlesen
-halbstundenwerte = pd.read_csv("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Daten\\Wetterstation\\halbstundenwerte.txt", sep = "\t", header = 0)
+halbstundenwerte = pd.read_csv("C:\\Users\\linus\\OneDrive\\Dokumente\\Publikation\\Data\\Wetterstation\\halbstundenwerte.txt", sep = "\t", header = 0)
 
 # Convert columns to numeric
 columns_to_convert = ["LT ", " RH ", " DR ", " QN ", " KD ", " PS "]
@@ -111,13 +111,13 @@ mdata.bfill(inplace=True)
 mdata["Precipitation"] = mdata["Rain_mm_Tot"] + mdata["PS"]
 mdata.drop(columns=["Rain_mm_Tot", "PS"], inplace=True)
 print(mdata)
-mdata.to_csv("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Daten\\mdata.csv", sep = ",", header = True)
+mdata.to_csv("C:\\Users\\linus\\OneDrive\\Dokumente\\Publikation\\Data\\mdata.csv", sep = ",", header = True)
 
 
 # importieren Oberflächentemperaturmessung pro Tag
-st_day1 = pd.read_csv("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Daten\\Oberflächentemperatur Messung\\ST Day 1.csv", sep = ";", low_memory=False)
-st_day2 = pd.read_csv("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Daten\\Oberflächentemperatur Messung\\ST Day 2.csv", sep = ";", low_memory=False)
-st_day3 = pd.read_csv("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Daten\\Oberflächentemperatur Messung\\ST Day 3.csv", sep = ";", low_memory=False)
+st_day1 = pd.read_csv("C:\\Users\\linus\\OneDrive\\Dokumente\\Publikation\\Data\\Oberflächentemperatur Messung\\ST Day 1.csv", sep = ";", low_memory=False)
+st_day2 = pd.read_csv("C:\\Users\\linus\\OneDrive\\Dokumente\\Publikation\\Data\\Oberflächentemperatur Messung\\ST Day 2.csv", sep = ";", low_memory=False)
+st_day3 = pd.read_csv("C:\\Users\\linus\\OneDrive\\Dokumente\\Publikation\\Data\\Oberflächentemperatur Messung\\ST Day 3.csv", sep = ";", low_memory=False)
 st_day1["Datetime"] = pd.to_datetime(st_day1["Date"] + " " + st_day1["Time"])
 st_day2["Datetime"] = pd.to_datetime(st_day2["Date"] + " " + st_day2["Time"])
 st_day3["Datetime"] = pd.to_datetime(st_day3["Date"] + " " + st_day3["Time"])
@@ -136,7 +136,7 @@ st_day3["Time"] = pd.to_datetime(st_day3["Time"], format="%H:%M:%S").dt.strftime
 surface_temp_data = pd.concat([st_day1, st_day2, st_day3])
 print(surface_temp_data)
 print(surface_temp_data.dtypes)
-surface_temp_data.to_csv("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Daten\\Oberflächentemperatur Messung\\surface_temp_data.csv", sep=",", header = True, index=False)
+surface_temp_data.to_csv("C:\\Users\\linus\\OneDrive\\Dokumente\\Publikation\\Data\\Oberflächentemperatur Messung\\surface_temp_data.csv", sep=",", header = True, index=False)
 
 
 
@@ -152,4 +152,4 @@ st_day3 = st_day3[columns_to_include].resample("30min").mean()
 st_data = pd.concat([st_day1, st_day2, st_day3])
 st_data.reset_index(drop = False, inplace = True)
 print(st_data)
-st_data.to_csv("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Daten\\Oberflächentemperatur Messung\\st_data.csv", sep = ",", header = True, index = False)
+st_data.to_csv("C:\\Users\\linus\\OneDrive\\Dokumente\\Publikation\\Data\\Oberflächentemperatur Messung\\st_data.csv", sep = ",", header = True, index = False)

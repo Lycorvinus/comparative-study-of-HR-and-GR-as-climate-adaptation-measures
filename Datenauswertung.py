@@ -16,7 +16,7 @@ from windrose import WindroseAxes
 
 
 # import completed_data
-completed_data = pd.read_csv("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Daten\\completed_data.csv", sep = ",", low_memory=False)
+completed_data = pd.read_csv("C:\\Users\\linus\\OneDrive\\Dokumente\\Publikation\\Data\\completed_data.csv", sep = ",", low_memory=False)
 completed_data["Datetime"] = pd.to_datetime(completed_data["Datetime"]) # Date Time Formatierung
 completed_data["Date"] = pd.to_datetime(completed_data["Datetime"]).dt.date
 completed_data["Time"] = pd.to_datetime(completed_data["Datetime"]).dt.time
@@ -1703,7 +1703,7 @@ plt.grid()
 plt.show()
 
 # Niederschlag vs TA für vorherige Klimaperiode
-klima_t = pd.read_csv("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Daten\\Klimadaten\\Lufttemperatur\\data\\data_OBS_DEU_PT1H_T2M_662.csv", sep = ",", low_memory=False, index_col=False)
+klima_t = pd.read_csv("C:\\Users\\linus\\OneDrive\\Dokumente\\Publikation\\Data\\Klimadaten\\Lufttemperatur\\data\\data_OBS_DEU_PT1H_T2M_662.csv", sep = ",", low_memory=False, index_col=False)
 klima_t["Zeitstempel"] = pd.to_datetime(klima_t["Zeitstempel"]) # Date Time Formatierung
 klima_t.drop(columns=["Produkt_Code"], inplace=True)
 klima_t.set_index("Zeitstempel", inplace=True)
@@ -1713,7 +1713,7 @@ klima_t["Produkt_Code"] = "OBS_DEU_PT1H_T2M"
 klima_t.rename(columns={"Wert": "Lufttemperatur"}, inplace=True)
 print(klima_t)
 
-klima_p = pd.read_csv("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Daten\\Klimadaten\\Niederschlag\\data\\data_OBS_DEU_P1M_RR_662.csv", sep = ",", low_memory=False,  index_col=False)
+klima_p = pd.read_csv("C:\\Users\\linus\\OneDrive\\Dokumente\\Publikation\\Data\\Klimadaten\\Niederschlag\\data\\data_OBS_DEU_P1M_RR_662.csv", sep = ",", low_memory=False,  index_col=False)
 klima_p["Zeitstempel"] = pd.to_datetime(klima_p["Zeitstempel"]) # Date Time Formatierung
 klima_p.drop(columns=["Produkt_Code"], inplace=True)
 klima_p.set_index("Zeitstempel", inplace=True)
@@ -2050,10 +2050,12 @@ print(cr_albedo["3 Year Solar Reflectance"].mean()) # 0.66
 # precipitation to follow
 print(monthly_temperature)
 
+print((HP_2.groupby(HP_2["Datetime"].dt.date)["TA_1_1_2"].mean()).mean()) 
+print((HP_2.groupby(HP_2["Datetime"].dt.date)["TA_1_1_2"].mean()).max()) 
 
 
 # Surface Temp Plot for Paper (measured Surface Temp vs TA vs SW IN)
-st_data = pd.read_csv("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Daten\\Oberflächentemperatur Messung\\st_data.csv", sep = ",", low_memory=False)
+st_data = pd.read_csv("C:\\Users\\linus\\OneDrive\\Dokumente\\Publikation\\Data\\Oberflächentemperatur Messung\\st_data.csv", sep = ",", low_memory=False)
 st_data["Datetime"] =  pd.to_datetime(st_data["Datetime"])
 merged_data = pd.merge(completed_data[["Datetime", "TA_1_1_2", "SW_IN"]], st_data[["Datetime", "GD_MW", "HD_MW"]], on="Datetime", how="left")
 completed_data["GD_MW"] = merged_data["GD_MW"]

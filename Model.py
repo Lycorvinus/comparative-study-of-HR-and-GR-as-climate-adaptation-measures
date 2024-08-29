@@ -13,7 +13,7 @@ from sklearn.preprocessing import StandardScaler
 
 
 # import logger_data
-logger_data = pd.read_csv("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Daten\\logger_data.csv", sep = ",", low_memory=False)
+logger_data = pd.read_csv("C:\\Users\\linus\\OneDrive\\Dokumente\\Publikation\\Data\\logger_data.csv", sep = ",", low_memory=False)
 logger_data["Datetime"] = pd.to_datetime(logger_data["Datetime"]) # Date Time Formatierung
 logger_data["Date"] = pd.to_datetime(logger_data["Datetime"]).dt.date
 logger_data["Time"] = pd.to_datetime(logger_data["Datetime"]).dt.time
@@ -39,8 +39,8 @@ logger_data.index.name = "Datetime"
 
 
 # Import de Oberflächentemperaturmessungen
-surface_temp_data = pd.read_csv("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Daten\\Oberflächentemperatur Messung\\surface_temp_data.csv", sep=",", header = 0, low_memory = False)
-st_data = pd.read_csv("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Daten\\Oberflächentemperatur Messung\\st_data.csv", sep = ",", header = 0, low_memory = False)
+surface_temp_data = pd.read_csv("C:\\Users\\linus\\OneDrive\\Dokumente\\Publikation\\Data\\Oberflächentemperatur Messung\\surface_temp_data.csv", sep=",", header = 0, low_memory = False)
+st_data = pd.read_csv("C:\\Users\\linus\\OneDrive\\Dokumente\\Publikation\\Data\\Oberflächentemperatur Messung\\st_data.csv", sep = ",", header = 0, low_memory = False)
 st_data["Datetime"] = pd.to_datetime(st_data["Datetime"])
 st_data.set_index("Datetime", inplace = True)
 print(surface_temp_data)
@@ -51,7 +51,7 @@ print(type(st_data))
 # descriptive stats um Ausreißer zu identifizieren
 descriptive_stats = logger_data[selected_columns]
 descriptive_stats = descriptive_stats.describe()
-descriptive_stats.to_csv("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Daten\\descriptive_stats.csv", sep = ";", decimal=",", header = True)
+descriptive_stats.to_csv("C:\\Users\\linus\\OneDrive\\Dokumente\\Publikation\\Data\\descriptive_stats.csv", sep = ";", decimal=",", header = True)
 
 
 
@@ -131,7 +131,7 @@ logger_data["specific_heat_cap_air"] = np.interp(logger_data["TA_1_1_2"], dynami
 # plt.grid()
 # plt.show()
 
-mdata = pd.read_csv("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Daten\\mdata.csv", sep = ",", low_memory=False)
+mdata = pd.read_csv("C:\\Users\\linus\\OneDrive\\Dokumente\\Publikation\\Data\\mdata.csv", sep = ",", low_memory=False)
 mdata["Datetime"] = pd.to_datetime(mdata["Datetime"].str.strip(), yearfirst=True, format="%Y-%m-%d %H:%M:%S") # Date Time Formatierung
 print(mdata)
 
@@ -310,18 +310,18 @@ orig_gr_diag.reset_index(inplace=True)
 orig_gr_coeff = orig_gr_coeff.round(3)
 orig_gr_diag = orig_gr_diag.round(3)
 orig_gr_coeff.to_csv(
-    "C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Daten\\orig_gr_coeff.csv", 
+    "C:\\Users\\linus\\OneDrive\\Dokumente\\Publikation\\Data\\orig_gr_coeff.csv", 
     sep=";", 
     decimal=",",
     index=False
 )
 orig_gr_diag.to_csv(
-    "C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Daten\\orig_gr_diag.csv", 
+    "C:\\Users\\linus\\OneDrive\\Dokumente\\Publikation\\Data\\orig_gr_diag.csv", 
     sep=";", 
     decimal=",",
     index=False
 )
-compare_ST_GR.to_excel("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Daten\\compare_original_ST_GR.xlsx") 
+compare_ST_GR.to_excel("C:\\Users\\linus\\OneDrive\\Dokumente\\Publikation\\Data\\compare_original_ST_GR.xlsx") 
 
 
 # für Hybriddach
@@ -369,18 +369,18 @@ orig_hr_diag.reset_index(inplace=True)
 orig_hr_coeff = orig_hr_coeff.round(3)
 orig_hr_diag = orig_hr_diag.round(3)
 orig_hr_coeff.to_csv(
-    "C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Daten\\orig_hr_coeff.csv", 
+    "C:\\Users\\linus\\OneDrive\\Dokumente\\Publikation\\Data\\orig_hr_coeff.csv", 
     sep=";", 
     decimal=",",
     index=False
 )
 orig_hr_diag.to_csv(
-    "C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Daten\\orig_hr_diag.csv", 
+    "C:\\Users\\linus\\OneDrive\\Dokumente\\Publikation\\Data\\orig_hr_diag.csv", 
     sep=";", 
     decimal=",",
     index=False
 )
-compare_ST_HR.to_excel("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Daten\\compare_original_ST_HR.xlsx")
+compare_ST_HR.to_excel("C:\\Users\\linus\\OneDrive\\Dokumente\\Publikation\\Data\\compare_original_ST_HR.xlsx")
 
 
 
@@ -547,18 +547,18 @@ impr_gr_diag.reset_index(inplace=True)
 impr_gr_coeff = impr_gr_coeff.round(3)
 impr_gr_diag = impr_gr_diag.round(3)
 impr_gr_coeff.to_csv(
-    "C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Daten\\impr_gr_coeff.csv", 
+    "C:\\Users\\linus\\OneDrive\\Dokumente\\Publikation\\Data\\impr_gr_coeff.csv", 
     sep=";", 
     decimal=",",
     index=False
 )
 impr_gr_diag.to_csv(
-    "C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Daten\\impr_gr_diag.csv", 
+    "C:\\Users\\linus\\OneDrive\\Dokumente\\Publikation\\Data\\impr_gr_diag.csv", 
     sep=";", 
     decimal=",",
     index=False
 )
-compare_ST_GR.to_excel("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Daten\\compare_ST_GR.xlsx") 
+compare_ST_GR.to_excel("C:\\Users\\linus\\OneDrive\\Dokumente\\Publikation\\Data\\compare_ST_GR.xlsx") 
 
 # Hybriddach
 # Prädiktorvariablen von Tag 2 und 3
@@ -607,18 +607,18 @@ impr_hr_diag.reset_index(inplace=True)
 impr_hr_coeff = impr_hr_coeff.round(3)
 impr_hr_diag = impr_hr_diag.round(3)
 impr_hr_coeff.to_csv(
-    "C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Daten\\impr_hr_coeff.csv", 
+    "C:\\Users\\linus\\OneDrive\\Dokumente\\Publikation\\Data\\impr_hr_coeff.csv", 
     sep=";", 
     decimal=",",
     index=False
 )
 impr_hr_diag.to_csv(
-    "C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Daten\\impr_hr_diag.csv", 
+    "C:\\Users\\linus\\OneDrive\\Dokumente\\Publikation\\Data\\impr_hr_diag.csv", 
     sep=";", 
     decimal=",",
     index=False
 )
-compare_ST_HR.to_excel("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Daten\\compare_ST_HR.xlsx")
+compare_ST_HR.to_excel("C:\\Users\\linus\\OneDrive\\Dokumente\\Publikation\\Data\\compare_ST_HR.xlsx")
 
 # Scatter Plot GR
 # Calculate R-squared
@@ -732,13 +732,13 @@ impr_gr_diag_comp.reset_index(inplace=True)
 impr_gr_coeff_comp = impr_gr_coeff_comp.round(3)
 impr_gr_diag_comp = impr_gr_diag_comp.round(3)
 impr_gr_coeff_comp.to_csv(
-    "C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Daten\\impr_gr_coeff_comp.csv", 
+    "C:\\Users\\linus\\OneDrive\\Dokumente\\Publikation\\Data\\impr_gr_coeff_comp.csv", 
     sep=";", 
     decimal=",",
     index=False
 )
 impr_gr_diag_comp.to_csv(
-    "C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Daten\\impr_gr_diag_comp.csv", 
+    "C:\\Users\\linus\\OneDrive\\Dokumente\\Publikation\\Data\\impr_gr_diag_comp.csv", 
     sep=";", 
     decimal=",",
     index=False
@@ -778,13 +778,13 @@ impr_hr_diag_comp.reset_index(inplace=True)
 impr_hr_coeff_comp = impr_hr_coeff_comp.round(3)
 impr_hr_diag_comp = impr_hr_diag_comp.round(3)
 impr_hr_coeff_comp.to_csv(
-    "C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Daten\\impr_hr_coeff_comp.csv", 
+    "C:\\Users\\linus\\OneDrive\\Dokumente\\Publikation\\Data\\impr_hr_coeff_comp.csv", 
     sep=";", 
     decimal=",",
     index=False
 )
 impr_hr_diag_comp.to_csv(
-    "C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Daten\\impr_hr_diag_comp.csv", 
+    "C:\\Users\\linus\\OneDrive\\Dokumente\\Publikation\\Data\\impr_hr_diag_comp.csv", 
     sep=";", 
     decimal=",",
     index=False
@@ -1387,7 +1387,7 @@ selected_columns = ["TA_1_1_2", "RH_1_1_2", "TS_CS65X_1_1_1", "TS_CS65X_1_1_2", 
                     "LW_OUT_HR_Calculated", "Precipitation"]
 descriptive_stats = completed_data[selected_columns]
 descriptive_stats = descriptive_stats.describe()
-descriptive_stats.to_csv("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Daten\\descriptive_stats.csv", sep = ";", decimal=",", header = True)
+descriptive_stats.to_csv("C:\\Users\\linus\\OneDrive\\Dokumente\\Publikation\\Data\\descriptive_stats.csv", sep = ";", decimal=",", header = True)
 
-completed_data.to_csv("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Daten\\completed_data.csv", sep = ",", header = True, index=False)
+completed_data.to_csv("C:\\Users\\linus\\OneDrive\\Dokumente\\Publikation\\Data\\completed_data.csv", sep = ",", header = True, index=False)
 
