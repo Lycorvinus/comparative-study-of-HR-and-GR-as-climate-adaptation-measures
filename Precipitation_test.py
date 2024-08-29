@@ -9,7 +9,7 @@ from matplotlib.dates import MonthLocator, DateFormatter
 # Einlesen der Wetterdaten von der IGÖ Dachstation
 
 # Einzelne Datensätze
-files = glob.glob("C:\\Users\\linus\\OneDrive\\Dokumente\\Publikation\\Data\\Wetterstation\\*TOA5*.dat") # Liste für das iterative einlesen von Daten der Wetterstation
+files = glob.glob("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Data\\Wetterstation\\*TOA5*.dat") # Liste für das iterative einlesen von Daten der Wetterstation
 # Importieren der Flux_CSFormat Dateien Header über skiprows ausgelassen und Spaltennamen über skiprows belassen
 wdata = pd.concat([pd.read_csv(f, skiprows=[0, 2, 3], sep=",", low_memory=False) for f in files], ignore_index=True)
 print(wdata.dtypes) 
@@ -29,7 +29,7 @@ print(wdata)
 
 
 # Daten vom 01.07.2023 bis zum 31.01.2024 einlesen
-halbstundenwerte = pd.read_csv("C:\\Users\\linus\\OneDrive\\Dokumente\\Publikation\\Data\\Wetterstation\\halbstundenwerte.txt", sep = "\t", header = 0)
+halbstundenwerte = pd.read_csv("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Data\\Wetterstation\\halbstundenwerte.txt", sep = "\t", header = 0)
 
 # Convert columns to numeric
 columns_to_convert = ["LT ", " RH ", " DR ", " QN ", " KD ", " PS "]

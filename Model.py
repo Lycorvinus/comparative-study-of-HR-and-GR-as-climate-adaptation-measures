@@ -13,7 +13,7 @@ from sklearn.preprocessing import StandardScaler
 
 
 # import logger_data
-logger_data = pd.read_csv("C:\\Users\\linus\\OneDrive\\Dokumente\\Publikation\\Data\\logger_data.csv", sep = ",", low_memory=False)
+logger_data = pd.read_csv("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Data\\logger_data.csv", sep = ",", low_memory=False)
 logger_data["Datetime"] = pd.to_datetime(logger_data["Datetime"]) # Date Time Formatierung
 logger_data["Date"] = pd.to_datetime(logger_data["Datetime"]).dt.date
 logger_data["Time"] = pd.to_datetime(logger_data["Datetime"]).dt.time
@@ -39,8 +39,8 @@ logger_data.index.name = "Datetime"
 
 
 # Import de Oberflächentemperaturmessungen
-surface_temp_data = pd.read_csv("C:\\Users\\linus\\OneDrive\\Dokumente\\Publikation\\Data\\Oberflächentemperatur Messung\\surface_temp_data.csv", sep=",", header = 0, low_memory = False)
-st_data = pd.read_csv("C:\\Users\\linus\\OneDrive\\Dokumente\\Publikation\\Data\\Oberflächentemperatur Messung\\st_data.csv", sep = ",", header = 0, low_memory = False)
+surface_temp_data = pd.read_csv("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Data\\Oberflächentemperatur Messung\\surface_temp_data.csv", sep=",", header = 0, low_memory = False)
+st_data = pd.read_csv("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Data\\Oberflächentemperatur Messung\\st_data.csv", sep = ",", header = 0, low_memory = False)
 st_data["Datetime"] = pd.to_datetime(st_data["Datetime"])
 st_data.set_index("Datetime", inplace = True)
 print(surface_temp_data)
@@ -131,7 +131,7 @@ logger_data["specific_heat_cap_air"] = np.interp(logger_data["TA_1_1_2"], dynami
 # plt.grid()
 # plt.show()
 
-mdata = pd.read_csv("C:\\Users\\linus\\OneDrive\\Dokumente\\Publikation\\Data\\mdata.csv", sep = ",", low_memory=False)
+mdata = pd.read_csv("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Data\\mdata.csv", sep = ",", low_memory=False)
 mdata["Datetime"] = pd.to_datetime(mdata["Datetime"].str.strip(), yearfirst=True, format="%Y-%m-%d %H:%M:%S") # Date Time Formatierung
 print(mdata)
 
@@ -408,7 +408,7 @@ plt.ylabel("Modelled Surface Temperature (°C)")
 plt.legend(loc="center", bbox_to_anchor=(0.45, -0.15), ncol = 1, frameon=False)
 plt.tight_layout()
 plt.grid(True)
-plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Scatter original Modell GR.pdf", format="pdf", bbox_inches="tight")
+#plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Scatter original Modell GR.pdf", format="pdf", bbox_inches="tight")
 plt.show()
 
 # Scatter Plot HR
@@ -647,7 +647,7 @@ plt.ylabel("Modelled Surface Temperature (°C)")
 plt.legend(loc="center", bbox_to_anchor=(0.45, -0.15), ncol = 1, frameon=False)
 plt.tight_layout()
 plt.grid(True)
-plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Scatter Modell GR.pdf", format="pdf", bbox_inches="tight")
+#plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Scatter Modell GR.pdf", format="pdf", bbox_inches="tight")
 plt.show()
 
 # Scatter Plot HR
@@ -676,7 +676,7 @@ plt.ylabel("Modelled Surface Temperature (°C)")
 plt.legend(loc="center", bbox_to_anchor=(0.45, -0.15), ncol = 1, frameon=False)
 plt.tight_layout()
 plt.grid(True)
-plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Scatter Modell HR.pdf", format="pdf", bbox_inches="tight")
+#plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Scatter Modell HR.pdf", format="pdf", bbox_inches="tight")
 plt.show()
 
 # snspp = sns.pairplot(st_model_gr)
@@ -816,7 +816,7 @@ for i, date in enumerate(dates):
     ax.set_xticklabels(filtered_completed_data["Datetime"].dt.strftime("%d %b %H:%M")[::8])
     ax.set_xlim(filtered_completed_data["Datetime"].min(), filtered_completed_data["Datetime"].max())
 ax.legend(loc="center", bbox_to_anchor=(0.5, -0.35), frameon=False, ncol=4)
-plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Surface Temp Model vs Measure Time Series.pdf", format="pdf")
+#plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Surface Temp Model vs Measure Time Series.pdf", format="pdf")
 plt.show()
 
 # QG berechnen
@@ -944,7 +944,7 @@ plt.xlim(completed_data["Datetime"].min(), completed_data["Datetime"].max())
 plt.ylim([QG_HR["QG_HR"].min(),QG_HR["QG_HR"].max()])
 plt.yticks([-500,-250,0,250])
 plt.grid()
-plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Zeitreihe QGs mit Ausreißern.pdf", format="pdf", bbox_inches="tight")
+#plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Zeitreihe QGs mit Ausreißern.pdf", format="pdf", bbox_inches="tight")
 plt.show
 
 
@@ -1003,7 +1003,7 @@ plt.xlim(completed_data["Datetime"].min(), completed_data["Datetime"].max())
 plt.ylim([QG_HR["QG_HR"].min(),QG_HR["QG_HR"].max()])
 plt.yticks([-500,-250,0,250])
 plt.grid()
-plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Zeitreihe QGs.pdf", format="pdf", bbox_inches="tight")
+#plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Zeitreihe QGs.pdf", format="pdf", bbox_inches="tight")
 plt.show
 
 # QH berechnen (für alle Tage) nach Heusinger 2018
@@ -1240,7 +1240,7 @@ plt.legend(loc="center", bbox_to_anchor=(0.5,-0.65), ncol=2, frameon=False)
 plt.xticks(completed_data["Datetime"][::768], completed_data["Datetime"].dt.strftime("%d. %b")[::768], rotation=45)
 plt.xlim(completed_data["Datetime"].min(), completed_data["Datetime"].max())
 plt.grid()
-plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Zeitreihe QEs mit Ausreißern.pdf", format="pdf", bbox_inches="tight")
+#plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Zeitreihe QEs mit Ausreißern.pdf", format="pdf", bbox_inches="tight")
 plt.show
 
 # # # Statistische Bereinigung von QE via IQA
@@ -1280,7 +1280,7 @@ plt.legend(loc="center", bbox_to_anchor=(0.5,-0.65), ncol=2, frameon=False)
 plt.xticks(completed_data["Datetime"][::768], completed_data["Datetime"].dt.strftime("%d. %b")[::768], rotation=45)
 plt.xlim(completed_data["Datetime"].min(), completed_data["Datetime"].max())
 plt.grid()
-plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Zeitreihe QEs.pdf", format="pdf", bbox_inches="tight")
+#plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\Zeitreihe QEs.pdf", format="pdf", bbox_inches="tight")
 plt.show
 
 # fig, ax1 = plt.subplots(figsize=(75,5))
