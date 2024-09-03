@@ -2052,12 +2052,18 @@ print(cr_albedo["3 Year Solar Reflectance"].mean()) # 0.66
 # precipitation to follow
 
 print(monthly_temperature)
+print(completed_data.groupby(completed_data["Datetime"].dt.month)["TA_1_1_2"].mean())
+print(completed_data["TA_1_1_2"].mean())
+print(monthly_temperature.mean())
+print(monthly_precipitation)
 
 print((HP_2.groupby(HP_2["Datetime"].dt.date)["TA_1_1_2"].mean()).mean()) 
 print((HP_2.groupby(HP_2["Datetime"].dt.date)["TA_1_1_2"].mean()).max()) 
 
 
 # Surface Temp Plot for Paper (measured Surface Temp vs TA vs SW IN)
+
+# get measured Surface Temp Data for the plot
 st_data = pd.read_csv("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Daten\\Oberflächentemperatur Messung\\st_data.csv", sep = ",", low_memory=False)
 st_data["Datetime"] =  pd.to_datetime(st_data["Datetime"])
 merged_data = pd.merge(completed_data[["Datetime", "TA_1_1_2", "SW_IN"]], st_data[["Datetime", "GD_MW", "HD_MW"]], on="Datetime", how="left")
@@ -2140,7 +2146,7 @@ ax1.plot(HP_2["Datetime"], HP_2["VWC_1_1_1"],linewidth = 2,color="C2")
 ax1.plot(HP_2["Datetime"], HP_2["VWC_1_1_2"],linewidth = 2,color="C0")
 ax1.set_ylabel("VWC ($m³/m³$)")
 ax2.plot(HP_2["Datetime"] , HP_2["QE_GR"],linewidth = 2,color="C2", label="Green Roof")
-ax2.plot(HP_2["Datetime"] , HP_2["QE_HR"],linewidth = 2,color="C0", label="Green Roof")
+ax2.plot(HP_2["Datetime"] , HP_2["QE_HR"],linewidth = 2,color="C0", label="Hybrid Roof")
 ax2.set_ylabel("Q$_E$ ($W/m²$)")
 ax2.xaxis.set_major_formatter(mdates.DateFormatter("%d. %b"))
 ax1.set_xticklabels([])

@@ -1213,7 +1213,7 @@ for i in range(0,len(mdata)):
         Regentage.loc[i, "RT"]=mdata.index[i]
     else:
         n = n+1
-    if (n >= 144) & (pd.isna(mdata.loc[i, "Precipitation"])==False) | ((mdata.loc[i, "Datetime"].date() > pd.to_datetime("2023-07-25").date()) & (i < 947)):
+    if (n >= 144) & (i<len(mdata)-2): #(pd.isna(mdata.loc[i, "Precipitation"])==False) | ((mdata.loc[i, "Datetime"].date() > pd.to_datetime("2023-07-25").date()) & (i < 947)):
         if (swc_gr.loc[i, "TS_CS65X_1_1_1"] >= 0):
             swc_gr.loc[i, "VWC_1_1_1"] = completed_data.loc[i, "VWC_1_1_1"]
             swc_gr.loc[i, "VWC_1_1_1"] = swc_gr.loc[i, "VWC_1_1_1"]
