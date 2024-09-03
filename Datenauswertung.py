@@ -2057,6 +2057,15 @@ print(completed_data["TA_1_1_2"].mean())
 print(monthly_temperature.mean())
 print(monthly_precipitation)
 
+# mean VWC
+print(completed_data["VWC_1_1_1"].mean())
+print(completed_data["VWC_1_1_2"].mean())
+
+# mean QE
+print(completed_data["QE_GR"].mean())
+print(completed_data["QE_HR"].mean())
+
+
 print((HP_2.groupby(HP_2["Datetime"].dt.date)["TA_1_1_2"].mean()).mean()) 
 print((HP_2.groupby(HP_2["Datetime"].dt.date)["TA_1_1_2"].mean()).max()) 
 
