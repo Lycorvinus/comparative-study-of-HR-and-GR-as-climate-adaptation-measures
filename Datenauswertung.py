@@ -1901,6 +1901,8 @@ plt.grid(axis="y")
 #plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Masterarbeit\\Graphen\\MDC QE vs SW.pdf", format="pdf", bbox_inches="tight")
 plt.show()
 
+# heat prevention or heat rejection factor
+# without data were any parameter is NaN
 subset = completed_data.dropna(subset=["QE_GR", "QE_HR", "LW_IN", "SW_IN", "SW_OUT_GR_Calculated", "SW_OUT_HR_Calculated"])
 
 print(((completed_data["QE_GR"].mean()+completed_data["SW_OUT_GR_Calculated"].mean())/completed_data["SW_IN"].mean())*100)
@@ -1908,7 +1910,6 @@ print((completed_data["QE_GR"].mean()+completed_data["SW_OUT_GR_Calculated"].mea
 
 print(((completed_data["QE_HR"].mean()+completed_data["SW_OUT_HR_Calculated"].mean())/completed_data["SW_IN"].mean())*100)
 print((completed_data["QE_HR"].mean()+completed_data["SW_OUT_HR_Calculated"].mean()))
-
 
 print(((subset["QE_GR"].mean()+subset["SW_OUT_GR_Calculated"].mean())/subset["SW_IN"].mean())*100)
 print((subset["QE_GR"].mean()+subset["SW_OUT_GR_Calculated"].mean()))
@@ -2029,15 +2030,15 @@ print(KP_2[(KP_2["Datetime"].dt.hour >= 10)&(KP_2["Datetime"].dt.hour <= 16)]["T
 
 # durchschnittliche Albedo von weißen Cool Roofs berechnen, Datenbank aus coolroofs.org (CRRC Cool Roofs)
 
-cr_albedo = pd.read_csv("C:\\Users\\linus\\OneDrive\\Dokumente\\Publikation\\Data\\Directory_Roofs_20240809-0100.csv", sep = ",", low_memory=False)
+cr_albedo = pd.read_csv("C:\\Users\\linus\\OneDrive\\Dokumente\\Publikation\\Data\\Directory_Roofs_20240908-0119.csv", sep = ",", low_memory=False)
 
 print(cr_albedo.info())
 cr_albedo = cr_albedo[cr_albedo["Color"].str.contains("White")==True]
 cr_albedo["3 Year Solar Reflectance"] = cr_albedo["3 Year Solar Reflectance"].str.replace("*", "", regex=False)
 cr_albedo["3 Year Solar Reflectance"] = pd.to_numeric(cr_albedo["3 Year Solar Reflectance"])
 print(cr_albedo.info())
-print(cr_albedo["Initial Solar Reflectance"].mean()) # 0.75
-print(cr_albedo["3 Year Solar Reflectance"].mean()) # 0.66
+print(cr_albedo["Initial Solar Reflectance"].mean()) # 0.7590
+print(cr_albedo["3 Year Solar Reflectance"].mean()) # 0.6621
 
 # with removing all the rows that contain a * in 3 Year Solar Reflections and that contain NaN in said column
 cr_albedo = pd.read_csv("C:\\Users\\linus\\OneDrive\\Dokumente\\Publikation\\Data\\Directory_Roofs_20240809-0100.csv", sep = ",", low_memory=False)
@@ -2045,8 +2046,8 @@ cr_albedo = cr_albedo[cr_albedo["Color"].str.contains("White")==True]
 cr_albedo = cr_albedo[cr_albedo["3 Year Solar Reflectance"].isna()==False]
 cr_albedo = cr_albedo[~cr_albedo["3 Year Solar Reflectance"].str.contains("*", regex=False)]
 cr_albedo["3 Year Solar Reflectance"] = pd.to_numeric(cr_albedo["3 Year Solar Reflectance"])
-print(cr_albedo["Initial Solar Reflectance"].mean()) # 0.77
-print(cr_albedo["3 Year Solar Reflectance"].mean()) # 0.66
+print(cr_albedo["Initial Solar Reflectance"].mean()) # 0.7719
+print(cr_albedo["3 Year Solar Reflectance"].mean()) # 0.6634
 
 # mean Air Temp and Precipitation sums per month
 # precipitation to follow
@@ -2184,4 +2185,69 @@ ax2.legend(loc='center', bbox_to_anchor=(0.5, -0.25), ncol=2, frameon=False)
 #plt.tight_layout()
 plt.savefig("C:\\Users\\linus\\OneDrive\\Dokumente\\Publikation\\Plots\\vwc_precipitation_timeseries_for_appendix.pdf", format="pdf", bbox_inches='tight')
 plt.show()
+
+
+
+# heat prevention or heat rejection factor
+
+# data for heat preventinoon table for paper - average over HP 2
+# Heat Prevention
+print(((HP_2["QE_GR"].mean()+HP_2["SW_OUT_GR_Calculated"].mean())/HP_2["SW_IN"].mean())*100)
+
+
+print(((HP_2["QE_HR"].mean()+HP_2["SW_OUT_HR_Calculated"].mean())/HP_2["SW_IN"].mean())*100)
+
+# hypothetical cool roof
+print((((HP_2["SW_IN"] * 0.66).mean())/HP_2["SW_IN"].mean())*100)
+
+
+# QE
+print(HP_2["QE_GR"].mean())
+
+print(HP_2["QE_HR"].mean())
+
+# SO Out
+print(HP_2["SW_OUT_GR_Calculated"].mean())
+print(HP_2["Albedo_HR"].mean())
+print(HP_2["SW_OUT_HR_Calculated"].mean())
+
+print((HP_2["SW_IN"] * 0.66).mean())
+
+# SW In
+print(HP_2["SW_IN"].mean())
+
+# T Air
+print(HP_2["TA_1_1_2"].mean())
+
+
+# data for heat preventinoon table for paper - daytime average (10-16 o'clock) over HP 2
+# Heat Prevention
+print(((HP_2[(HP_2["Datetime"].dt.hour >= 10) & (HP_2["Datetime"].dt.hour <= 16)]["QE_GR"].mean()+
+        HP_2[(HP_2["Datetime"].dt.hour >= 10) & (HP_2["Datetime"].dt.hour <= 16)]["SW_OUT_GR_Calculated"].mean())/
+        HP_2[(HP_2["Datetime"].dt.hour >= 10) & (HP_2["Datetime"].dt.hour <= 16)]["SW_IN"].mean())*100)
+
+print(((HP_2[(HP_2["Datetime"].dt.hour >= 10) & (HP_2["Datetime"].dt.hour <= 16)]["QE_HR"].mean()+
+        HP_2[(HP_2["Datetime"].dt.hour >= 10) & (HP_2["Datetime"].dt.hour <= 16)]["SW_OUT_HR_Calculated"].mean())/
+        HP_2[(HP_2["Datetime"].dt.hour >= 10) & (HP_2["Datetime"].dt.hour <= 16)]["SW_IN"].mean())*100)
+
+# hypothetical cool roof
+print((((HP_2[(HP_2["Datetime"].dt.hour >= 10) & (HP_2["Datetime"].dt.hour <= 16)]["SW_IN"] * 0.66).mean())/
+       HP_2[(HP_2["Datetime"].dt.hour >= 10) & (HP_2["Datetime"].dt.hour <= 16)]["SW_IN"].mean())*100)
+
+
+# QE
+print(HP_2[(HP_2["Datetime"].dt.hour >= 10) & (HP_2["Datetime"].dt.hour <= 16)]["QE_GR"].mean())
+
+print(HP_2[(HP_2["Datetime"].dt.hour >= 10) & (HP_2["Datetime"].dt.hour <= 16)]["QE_HR"].mean())
+
+# SO Out
+print(HP_2[(HP_2["Datetime"].dt.hour >= 10) & (HP_2["Datetime"].dt.hour <= 16)]["SW_OUT_GR_Calculated"].mean())
+
+print(HP_2[(HP_2["Datetime"].dt.hour >= 10) & (HP_2["Datetime"].dt.hour <= 16)]["SW_OUT_HR_Calculated"].mean())
+
+# SW In
+print(HP_2[(HP_2["Datetime"].dt.hour >= 10) & (HP_2["Datetime"].dt.hour <= 16)]["SW_IN"].mean())
+
+# T Air
+print(HP_2[(HP_2["Datetime"].dt.hour >= 10) & (HP_2["Datetime"].dt.hour <= 16)]["TA_1_1_2"].mean())
 
