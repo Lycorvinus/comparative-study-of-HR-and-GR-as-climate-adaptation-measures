@@ -224,7 +224,7 @@ logger_data["VWC_1_1_1"] = logger_data["SWC_1_1_1"]/1000/(1*0.45*0.06) * slope_g
 logger_data["VWC_1_1_2"] = logger_data["SWC_1_1_2"]/1000/(1*0.45*0.06) * slope_gr
 
 logger_data["SWC_1_1_1"] = (logger_data["VWC_1_1_1"]*(1*0.45*0.06))/((1*0.45*0.06)*0.65)
-logger_data["SWC_1_1_2"] = (logger_data["VWC_1_1_2"]*(1*0.45*0.06))/((1*0.45*0.06)*0.7388162)
+logger_data["SWC_1_1_2"] = (logger_data["VWC_1_1_2"]*(1*0.45*0.06))/((1*0.45*0.06)*0.78)
 
 logger_data["VWC_1_1_1"] = (logger_data["VWC_1_1_1"]/100)
 logger_data["VWC_1_1_2"] = (logger_data["VWC_1_1_2"]/100)

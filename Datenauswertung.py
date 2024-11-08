@@ -2041,7 +2041,7 @@ print(cr_albedo["Initial Solar Reflectance"].mean()) # 0.7590
 print(cr_albedo["3 Year Solar Reflectance"].mean()) # 0.6621
 
 # with removing all the rows that contain a * in 3 Year Solar Reflections and that contain NaN in said column
-cr_albedo = pd.read_csv("C:\\Users\\linus\\OneDrive\\Dokumente\\Publikation\\Data\\Directory_Roofs_20240809-0100.csv", sep = ",", low_memory=False)
+cr_albedo = pd.read_csv("C:\\Users\\linus\\OneDrive\\Dokumente\\Publikation\\Data\\Directory_Roofs_20240908-0119.csv", sep = ",", low_memory=False)
 cr_albedo = cr_albedo[cr_albedo["Color"].str.contains("White")==True]
 cr_albedo = cr_albedo[cr_albedo["3 Year Solar Reflectance"].isna()==False]
 cr_albedo = cr_albedo[~cr_albedo["3 Year Solar Reflectance"].str.contains("*", regex=False)]
@@ -2178,6 +2178,7 @@ ax2.plot(completed_data["Datetime"], completed_data["VWC_1_1_2"], color="C0", la
 ax1.set_xlim(completed_data["Datetime"].min(), completed_data["Datetime"].max())
 ax2.set_xlim(completed_data["Datetime"].min(), completed_data["Datetime"].max())
 ax1.set_xticklabels(["Aug 2023", "Sep 2023", "Oct 2023", "Nov 2023", "Dec 2023", "Jan 2024", "Feb 2024", "Mar 2024"])
+ax2.set_ylim(0, 0.8)
 ax1.set_ylabel("Precipitation (mm)")
 ax2.set_ylabel("VWC ($m³/m³$)")
 ax1.legend(loc='center', bbox_to_anchor=(0.5, -0.4), ncol=1, frameon=False)
@@ -2194,11 +2195,11 @@ plt.show()
 # Heat Prevention
 print(((HP_2["QE_GR"].mean()+HP_2["SW_OUT_GR_Calculated"].mean())/HP_2["SW_IN"].mean())*100)
 
-
+#hybrid roof
 print(((HP_2["QE_HR"].mean()+HP_2["SW_OUT_HR_Calculated"].mean())/HP_2["SW_IN"].mean())*100)
 
 # hypothetical cool roof
-print((((HP_2["SW_IN"] * 0.66).mean())/HP_2["SW_IN"].mean())*100)
+print((((HP_2["SW_IN"] * 0.706).mean())/HP_2["SW_IN"].mean())*100)
 
 
 # QE
@@ -2206,12 +2207,22 @@ print(HP_2["QE_GR"].mean())
 
 print(HP_2["QE_HR"].mean())
 
+
+print(HP_2.groupby(["Time"])["QE_GR"].mean().max())
+
+print(HP_2.groupby(["Time"])["QE_HR"].mean().max())
+
+
+print(HP_2["QE_GR"].max())
+
+print(HP_2["QE_HR"].max())
+
 # SO Out
 print(HP_2["SW_OUT_GR_Calculated"].mean())
 print(HP_2["Albedo_HR"].mean())
 print(HP_2["SW_OUT_HR_Calculated"].mean())
 
-print((HP_2["SW_IN"] * 0.66).mean())
+print((HP_2["SW_IN"] * 0.706).mean())
 
 # SW In
 print(HP_2["SW_IN"].mean())
@@ -2225,13 +2236,13 @@ print(HP_2["TA_1_1_2"].mean())
 print(((HP_2[(HP_2["Datetime"].dt.hour >= 10) & (HP_2["Datetime"].dt.hour <= 16)]["QE_GR"].mean()+
         HP_2[(HP_2["Datetime"].dt.hour >= 10) & (HP_2["Datetime"].dt.hour <= 16)]["SW_OUT_GR_Calculated"].mean())/
         HP_2[(HP_2["Datetime"].dt.hour >= 10) & (HP_2["Datetime"].dt.hour <= 16)]["SW_IN"].mean())*100)
-
+# hybrid roof
 print(((HP_2[(HP_2["Datetime"].dt.hour >= 10) & (HP_2["Datetime"].dt.hour <= 16)]["QE_HR"].mean()+
         HP_2[(HP_2["Datetime"].dt.hour >= 10) & (HP_2["Datetime"].dt.hour <= 16)]["SW_OUT_HR_Calculated"].mean())/
         HP_2[(HP_2["Datetime"].dt.hour >= 10) & (HP_2["Datetime"].dt.hour <= 16)]["SW_IN"].mean())*100)
 
 # hypothetical cool roof
-print((((HP_2[(HP_2["Datetime"].dt.hour >= 10) & (HP_2["Datetime"].dt.hour <= 16)]["SW_IN"] * 0.66).mean())/
+print((((HP_2[(HP_2["Datetime"].dt.hour >= 10) & (HP_2["Datetime"].dt.hour <= 16)]["SW_IN"] * 0.706).mean())/
        HP_2[(HP_2["Datetime"].dt.hour >= 10) & (HP_2["Datetime"].dt.hour <= 16)]["SW_IN"].mean())*100)
 
 
@@ -2244,6 +2255,8 @@ print(HP_2[(HP_2["Datetime"].dt.hour >= 10) & (HP_2["Datetime"].dt.hour <= 16)][
 print(HP_2[(HP_2["Datetime"].dt.hour >= 10) & (HP_2["Datetime"].dt.hour <= 16)]["SW_OUT_GR_Calculated"].mean())
 
 print(HP_2[(HP_2["Datetime"].dt.hour >= 10) & (HP_2["Datetime"].dt.hour <= 16)]["SW_OUT_HR_Calculated"].mean())
+
+print((HP_2[(HP_2["Datetime"].dt.hour >= 10) & (HP_2["Datetime"].dt.hour <= 16)]["SW_IN"] * 0.66).mean())
 
 # SW In
 print(HP_2[(HP_2["Datetime"].dt.hour >= 10) & (HP_2["Datetime"].dt.hour <= 16)]["SW_IN"].mean())
